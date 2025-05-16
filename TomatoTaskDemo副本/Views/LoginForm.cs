@@ -90,7 +90,7 @@ namespace todolist登录界面
             string password = PasswordBox.Text.Trim(); 
 
             // 输入不合规
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(username) || username == usernamePlaceholder || string.IsNullOrEmpty(password)|| password == passwordPlaceholder)
             {
                 MessageBox.Show("请填写用户名和密码", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
