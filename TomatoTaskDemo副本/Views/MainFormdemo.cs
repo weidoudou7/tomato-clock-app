@@ -8,12 +8,10 @@ using TomatoClockApp.Models;
 using TomatoClockApp.Repository;
 using TomatoClockApp.Services;
 using Task = TomatoClockApp.Models.Task;
-using MaterialSkin.Controls;
-using TomatoClockApp.Views;
 
-namespace TomatoTaskApp.Views
+namespace TomatoClockApp.Views
 {
-    public partial class MainForm : MaterialForm
+    public partial class MainFormdemo : Form
     {
         private TaskController taskController;
         private TimerController timerController;
@@ -21,8 +19,9 @@ namespace TomatoTaskApp.Views
         private AIController aiController;
         private CommunityController communityController;
         private StatisticsController statisticsController;
-        private readonly AppDbContext _context;
-        public MainForm()
+        private readonly AppDbContext _context; 
+
+        public MainFormdemo()
         {
             InitializeComponent();
             // 初始化单一上下文
@@ -42,6 +41,7 @@ namespace TomatoTaskApp.Views
             aiController = new AIController();
             communityController = new CommunityController();
         }
+
         private void btnAddTask_Click(object sender, EventArgs e)
         {
             var taskForm = new AddOrEditTaskForm(taskController);
@@ -158,11 +158,6 @@ namespace TomatoTaskApp.Views
         private void lvTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadTasks();
         }
     }
 }

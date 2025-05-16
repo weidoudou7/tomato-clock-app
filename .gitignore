@@ -13,10 +13,6 @@
 *.vs/
 .DS_Store
 
-# 本地数据库文件（图中 app.db 相关）
-app.db*
-*.db-shm
-*.db-wal
 
 # 编译/包文件
 *.dll

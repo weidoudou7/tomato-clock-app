@@ -8,7 +8,7 @@ using TomatoClockApp.Data;
 
 #nullable disable
 
-namespace TomatoTaskDemo.Migrations
+namespace TomatoTaskApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20250514133440_InitialCreate")]

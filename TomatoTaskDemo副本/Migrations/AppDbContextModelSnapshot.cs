@@ -7,7 +7,7 @@ using TomatoClockApp.Data;
 
 #nullable disable
 
-namespace TomatoTaskDemo.Migrations
+namespace TomatoTaskApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
