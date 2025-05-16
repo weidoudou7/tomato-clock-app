@@ -34,7 +34,7 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
-            contextMenu = new ContextMenuStrip(components);//右键功能菜单
+            contextMenu = new ContextMenuStrip(components);
             editTask = new ToolStripMenuItem();
             deleteTask = new ToolStripMenuItem();
             btnAddTask = new Button();
