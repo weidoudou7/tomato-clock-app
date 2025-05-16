@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TomatoClockApp.Views;
 using Microsoft.Data.Sqlite;
+using TomatoTaskDemo.Views;
+using System.Diagnostics;
 namespace todolist登录界面
 {
     public partial class LoginForm : Form
@@ -19,9 +21,10 @@ namespace todolist登录界面
         public LoginForm()
         {
             InitializeComponent();
-            Console.WriteLine($"实际连接路径: {_connectionString}");
+            Debug.WriteLine($"实际连接路径: {_connectionString}");
             // 配置连接字符串
             _connectionString = $"Data Source={AppDomain.CurrentDomain.BaseDirectory}\\app.db";
+            Debug.WriteLine($"连接字符串：{_connectionString}");
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -30,7 +33,8 @@ namespace todolist登录界面
             SetPlaceholder(UserNameBox, usernamePlaceholder);
             SetPlaceholder(PasswordBox, passwordPlaceholder);
         }
-
+        // 在 LoginForm 中添加测试方法
+       
         private void SetPlaceholder(TextBox textBox, string placeholderText)
         {
             textBox.Text = placeholderText;
@@ -74,7 +78,7 @@ namespace todolist登录界面
                 textBox.ForeColor = Color.Gray;
             }
         }
-        //密码的哈希方法加密
+        // 密码哈希方法
         private string GetPasswordHash(string password)
         {
             using (System.Security.Cryptography.SHA256 sha256 = System.Security.Cryptography.SHA256.Create())
@@ -85,12 +89,11 @@ namespace todolist登录界面
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
-            string username = UserNameBox.Text.Trim(); 
-            string password = PasswordBox.Text.Trim(); 
+            string username = UserNameBox.Text.Trim();
+            string password = PasswordBox.Text.Trim();
 
             // 输入不合规
-            if (string.IsNullOrEmpty(username) || username == usernamePlaceholder || string.IsNullOrEmpty(password)|| password == passwordPlaceholder)
+            if (string.IsNullOrEmpty(username) || username == usernamePlaceholder || string.IsNullOrEmpty(password) || password == passwordPlaceholder)
             {
                 MessageBox.Show("请填写用户名和密码", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -105,8 +108,7 @@ namespace todolist登录界面
                     using (var command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Username", username);
-                        command.Parameters.AddWithValue("@PasswordHash", GetPasswordHash(password)); // 哈希方法
-
+                        command.Parameters.AddWithValue("@PasswordHash", GetPasswordHash(password));
                         using (var reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -126,7 +128,7 @@ namespace todolist登录界面
                 catch (SqliteException ex)
                 {
                     MessageBox.Show($"SQLite 错误: {ex.SqliteErrorCode}\n{ex.Message}");
-                    Console.WriteLine(ex.StackTrace); // 输出完整堆栈信息
+                    Debug.WriteLine(ex.StackTrace); // 输出完整堆栈信息
                 }
                 catch (Exception ex)
                 {
@@ -134,8 +136,24 @@ namespace todolist登录界面
                 }
             }
         }
+        //密码加密
+        private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPassword.Checked)
+            {
+                PasswordBox.PasswordChar = '\0';   //显示输入
+            }
+            else
+            {
+                PasswordBox.PasswordChar = '*';   //显示*
+            }
+        }
 
-       
+        private void label4_Click(object sender, EventArgs e)
+        {
+            SignupForm signupform = new SignupForm();
+            signupform.ShowDialog();
+        }
     }
 
 
