@@ -10,6 +10,7 @@ using TomatoClockApp.Services;
 using Task = TomatoClockApp.Models.Task;
 using MaterialSkin.Controls;
 using TomatoClockApp.Views;
+using TomatoTaskDemo.Services;
 
 namespace TomatoTaskApp.Views
 {
@@ -51,7 +52,9 @@ namespace TomatoTaskApp.Views
 
         private void btnStartTimer_Click(object sender, EventArgs e)
         {
-            timerController.Start();
+            //timerController.Start();
+            BeginTask beginTask = new BeginTask(taskController, timerController);
+            beginTask.ShowDialog();
         }
 
         private void btnStopTimer_Click(object sender, EventArgs e)

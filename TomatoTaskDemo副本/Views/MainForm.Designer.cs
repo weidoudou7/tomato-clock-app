@@ -186,6 +186,7 @@ namespace TomatoTaskApp.Views
             btnStartTimer.TabIndex = 13;
             btnStartTimer.Text = "开始计时";
             btnStartTimer.UseVisualStyleBackColor = true;
+            btnStartTimer.Click += btnStartTimer_Click;
             // 
             // btnCommunity
             // 
