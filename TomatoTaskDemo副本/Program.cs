@@ -25,7 +25,7 @@ namespace TomatoClockApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainFormdemo());
-            Application.Run(new TomatoTaskApp.Views.MainForm());
+            Application.Run(new todolistµÇÂ¼½çÃæ.LoginForm());
         }
     }
 }
