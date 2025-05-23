@@ -11,6 +11,8 @@ using Task = TomatoClockApp.Models.Task;
 using MaterialSkin.Controls;
 using TomatoClockApp.Views;
 using TomatoTaskDemo.Services;
+using System.Drawing;
+using System.Linq;
 
 namespace TomatoTaskApp.Views
 {
@@ -23,6 +25,9 @@ namespace TomatoTaskApp.Views
         private CommunityController communityController;
         private StatisticsController statisticsController;
         private readonly AppDbContext _context;
+        private TaskTemplateController _templateController;
+        private bool showMyTemplates = false;
+
         public MainForm()
         {
             InitializeComponent();
@@ -42,6 +47,20 @@ namespace TomatoTaskApp.Views
             nlpController = new NLPController();
             aiController = new AIController();
             communityController = new CommunityController();
+
+            // 初始化模板控制器
+            var templateRepository = new TaskTemplateRepository(_context);
+            var taskRepository = new TaskRepository(_context);
+            _templateController = new TaskTemplateController(templateRepository, taskRepository);
+
+            // 绑定社区相关事件
+            cmbSort.SelectedIndexChanged += (s, e) => LoadTemplates();
+            btnUpload.Click += BtnUpload_Click;
+            btnMyTemplates.Click += (s, e) => { showMyTemplates = true; LoadTemplates(); };
+            btnAllTemplates.Click += (s, e) => { showMyTemplates = false; LoadTemplates(); };
+
+            // 初始化模板列表
+            LoadTemplates();
         }
         private void btnAddTask_Click(object sender, EventArgs e)
         {
@@ -175,6 +194,133 @@ namespace TomatoTaskApp.Views
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadTasks();
+        }
+
+        private void LoadTemplates()
+        {
+            flowPanel.Controls.Clear();
+            List<TaskTemplate> templates;
+            if (showMyTemplates)
+            {
+                templates = _templateController.GetUserTemplates(CurrentUser.UserId);
+            }
+            else
+            {
+                templates = _templateController.GetAllPublicTemplates();
+            }
+
+            // 排序
+            switch (cmbSort.SelectedItem?.ToString())
+            {
+                case "最多下载":
+                    templates = templates.OrderByDescending(t => t.Downloads).ToList();
+                    break;
+                case "最多点赞":
+                    templates = templates.OrderByDescending(t => t.Likes).ToList();
+                    break;
+                default:
+                    templates = templates.OrderByDescending(t => t.CreatedAt).ToList();
+                    break;
+            }
+
+            foreach (var template in templates)
+            {
+                var card = CreateTemplateCard(template);
+                flowPanel.Controls.Add(card);
+            }
+        }
+
+        private Panel CreateTemplateCard(TaskTemplate template)
+        {
+            var card = new Panel
+            {
+                Width = 280,
+                Height = 180,
+                Margin = new Padding(15),
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
+            };
+
+            var lblTitle = new Label
+            {
+                Text = template.Title,
+                Font = new Font("微软雅黑", 14, FontStyle.Bold),
+                Location = new Point(10, 10),
+                AutoSize = true
+            };
+            card.Controls.Add(lblTitle);
+
+            var lblCategory = new Label
+            {
+                Text = $"分类：{template.Category}",
+                Location = new Point(10, 40),
+                AutoSize = true
+            };
+            card.Controls.Add(lblCategory);
+
+            var lblAuthor = new Label
+            {
+                Text = $"作者ID：{template.CreatedByUserId}",
+                Location = new Point(10, 65),
+                AutoSize = true
+            };
+            card.Controls.Add(lblAuthor);
+
+            var lblPomodoros = new Label
+            {
+                Text = $"预计番茄数：{template.EstimatedPomodoros}",
+                Location = new Point(10, 90),
+                AutoSize = true
+            };
+            card.Controls.Add(lblPomodoros);
+
+            var btnUse = new MaterialButton
+            {
+                Text = "使用模板",
+                Location = new Point(10, 130),
+                Size = new Size(120, 36)
+            };
+            btnUse.Click += (s, e) => UseTemplate(template);
+            card.Controls.Add(btnUse);
+
+            return card;
+        }
+
+        private void UseTemplate(TaskTemplate template)
+        {
+            var task = new Task
+            {
+                Name = template.Title,
+                Category = template.Category,
+                Deadline = DateTime.Now.AddDays(7), // 默认设置为7天后
+                IsCompleted = false
+            };
+
+            taskController.AddTask(task);
+            MessageBox.Show("任务已创建！");
+            LoadTasks();
+        }
+
+        private void BtnUpload_Click(object sender, EventArgs e)
+        {
+            using (var form = new TaskTemplateEditForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    var template = new TaskTemplate
+                    {
+                        Title = form.Title,
+                        Description = form.Description,
+                        Category = form.Category,
+                        EstimatedPomodoros = form.EstimatedPomodoros,
+                        IsPublic = form.IsPublic,
+                        CreatedByUserId = CurrentUser.UserId
+                    };
+                    _templateController.CreateTemplate(template);
+                    showMyTemplates = true;
+                    LoadTemplates();
+                }
+            }
         }
     }
 }
