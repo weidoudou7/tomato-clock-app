@@ -8,13 +8,10 @@ using TomatoClockApp.Models;
 using TomatoClockApp.Repository;
 using TomatoClockApp.Services;
 using Task = TomatoClockApp.Models.Task;
-using MaterialSkin.Controls;
-using TomatoClockApp.Views;
-using TomatoTaskDemo.Services;
 
-namespace TomatoTaskApp.Views
+namespace TomatoClockApp.Views
 {
-    public partial class MainForm : MaterialForm
+    public partial class MainFormdemo : Form
     {
         private TaskController taskController;
         private TimerController timerController;
@@ -22,8 +19,9 @@ namespace TomatoTaskApp.Views
         private AIController aiController;
         private CommunityController communityController;
         private StatisticsController statisticsController;
-        private readonly AppDbContext _context;
-        public MainForm()
+        private readonly AppDbContext _context; 
+
+        public MainFormdemo()
         {
             InitializeComponent();
             // 初始化单一上下文
@@ -43,6 +41,7 @@ namespace TomatoTaskApp.Views
             aiController = new AIController();
             communityController = new CommunityController();
         }
+
         private void btnAddTask_Click(object sender, EventArgs e)
         {
             var taskForm = new AddOrEditTaskForm(taskController);
@@ -52,9 +51,7 @@ namespace TomatoTaskApp.Views
 
         private void btnStartTimer_Click(object sender, EventArgs e)
         {
-            //timerController.Start();
-            BeginTask beginTask = new BeginTask(taskController, timerController);
-            beginTask.ShowDialog();
+            timerController.Start();
         }
 
         private void btnStopTimer_Click(object sender, EventArgs e)
@@ -83,15 +80,10 @@ namespace TomatoTaskApp.Views
 
         private void btnCommunity_Click(object sender, EventArgs e)
         {
-            // 1. 创建 TaskTemplateController
             var templateRepository = new TaskTemplateRepository(_context);
             var taskRepository = new TaskRepository(_context);
             var templateController = new TaskTemplateController(templateRepository, taskRepository);
-
-            // 2. 获取当前用户ID（比如 CurrentUser.UserId）
             int currentUserId = CurrentUser.UserId;
-
-            // 3. 正确创建 CommunityForm
             var communityForm = new CommunityForm(templateController, currentUserId);
             communityForm.ShowDialog();
         }
@@ -170,11 +162,6 @@ namespace TomatoTaskApp.Views
         private void lvTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadTasks();
         }
     }
 }

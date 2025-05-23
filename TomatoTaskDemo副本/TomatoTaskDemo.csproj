@@ -10,7 +10,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.5" />
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+		<PackageReference Include="MaterialSkin" Version="0.2.1" />
+		<PackageReference Include="MaterialSkin.2" Version="2.3.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,6 +22,10 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\WindowsFormsControlLibrary\WindowsFormsControlLibrary.csproj" />
 	</ItemGroup>
 
 </Project>

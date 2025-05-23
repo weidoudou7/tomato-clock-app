@@ -1,19 +1,18 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
-using todolist登录界面;
 using TomatoClockApp.Controllers;
 using TomatoClockApp.Data;
 using TomatoClockApp.Repository;
 using TomatoClockApp.Views;
-//// 在Program.cs或启动类中添加服务配置
+//// 锟斤拷Program.cs锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟接凤拷锟斤拷锟斤拷锟斤拷
 //var services = new ServiceCollection();
 //services.AddDbContext<AppDbContext>();
 //services.AddScoped<TaskRepository>();
 //services.AddScoped<TaskController>();
 //var serviceProvider = services.BuildServiceProvider();
 
-//// 创建窗体时使用服务提供程序
+//// 锟斤拷锟斤拷锟斤拷锟斤拷时使锟矫凤拷锟斤拷锟结供锟斤拷锟斤拷
 //var taskController = serviceProvider.GetRequiredService<TaskController>();
 //var taskForm = new TaskForm(taskController);
 namespace TomatoClockApp
@@ -25,7 +24,14 @@ namespace TomatoClockApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            
+            // 纭繚鏁版嵁搴撹鍒涘缓
+            using (var context = new AppDbContext())
+            {
+                context.Database.EnsureCreated();
+            }
+            
+            Application.Run(new todolist鐧诲綍鐣岄潰.LoginForm());
         }
     }
 }

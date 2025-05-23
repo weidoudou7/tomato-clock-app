@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TomatoTaskDemo.Migrations
+namespace TomatoTaskApp.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

@@ -42,7 +42,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            label1.Location = new Point(827, 180);
+            label1.Location = new Point(193, 103);
             label1.Name = "label1";
             label1.Size = new Size(272, 40);
             label1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             // UserNameBox
             // 
-            UserNameBox.Location = new Point(827, 284);
+            UserNameBox.Location = new Point(193, 212);
             UserNameBox.Name = "UserNameBox";
             UserNameBox.Size = new Size(304, 46);
             UserNameBox.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             // PasswordBox
             // 
-            PasswordBox.Location = new Point(827, 406);
+            PasswordBox.Location = new Point(193, 329);
             PasswordBox.Name = "PasswordBox";
             PasswordBox.Size = new Size(304, 46);
             PasswordBox.TabIndex = 2;
@@ -69,7 +69,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(695, 289);
+            label2.Location = new Point(31, 212);
             label2.Name = "label2";
             label2.Size = new Size(137, 39);
             label2.TabIndex = 3;
@@ -78,7 +78,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(695, 406);
+            label3.Location = new Point(61, 330);
             label3.Name = "label3";
             label3.Size = new Size(107, 39);
             label3.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(827, 516);
+            btnLogin.Location = new Point(193, 439);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(304, 63);
             btnLogin.TabIndex = 5;
@@ -97,7 +97,7 @@
             // checkBoxPassword
             // 
             checkBoxPassword.AutoSize = true;
-            checkBoxPassword.Location = new Point(1152, 407);
+            checkBoxPassword.Location = new Point(518, 330);
             checkBoxPassword.Name = "checkBoxPassword";
             checkBoxPassword.Size = new Size(205, 43);
             checkBoxPassword.TabIndex = 6;
@@ -111,7 +111,7 @@
             label4.Cursor = Cursors.Hand;
             label4.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold | FontStyle.Underline);
             label4.ForeColor = SystemColors.Highlight;
-            label4.Location = new Point(840, 632);
+            label4.Location = new Point(206, 555);
             label4.Name = "label4";
             label4.RightToLeft = RightToLeft.No;
             label4.Size = new Size(287, 40);
@@ -123,7 +123,7 @@
             // 
             AutoScaleDimensions = new SizeF(18F, 39F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1955, 1002);
+            ClientSize = new Size(803, 796);
             Controls.Add(label4);
             Controls.Add(checkBoxPassword);
             Controls.Add(btnLogin);

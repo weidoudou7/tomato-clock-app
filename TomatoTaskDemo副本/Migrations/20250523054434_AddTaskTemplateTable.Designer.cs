@@ -11,8 +11,8 @@ using TomatoClockApp.Data;
 namespace TomatoTaskApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250514133440_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250523054434_AddTaskTemplateTable")]
+    partial class AddTaskTemplateTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,13 +57,62 @@ namespace TomatoTaskApp.Migrations
                     b.ToTable("Tasks");
                 });
 
+            modelBuilder.Entity("TomatoClockApp.Models.TaskTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Downloads")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EstimatedPomodoros")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Likes")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.ToTable("TaskTemplates");
+                });
+
             modelBuilder.Entity("TomatoClockApp.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Password")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Username")
@@ -72,6 +121,17 @@ namespace TomatoTaskApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("TomatoClockApp.Models.TaskTemplate", b =>
+                {
+                    b.HasOne("TomatoClockApp.Models.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
                 });
 #pragma warning restore 612, 618
         }

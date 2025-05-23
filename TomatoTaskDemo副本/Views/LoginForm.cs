@@ -11,6 +11,10 @@ using TomatoClockApp.Views;
 using Microsoft.Data.Sqlite;
 using TomatoTaskDemo.Views;
 using System.Diagnostics;
+using TomatoTaskApp.Views;
+using TomatoClockApp.Data;
+using TomatoClockApp.Models;
+using BCrypt.Net;
 namespace todolist登录界面
 {
     public partial class LoginForm : Form
@@ -99,42 +103,97 @@ namespace todolist登录界面
                 return;
             }
             // 连接数据库并查询
-            using (var connection = new SqliteConnection(_connectionString))
+            try
             {
-                try
+                using (var context = new AppDbContext())
                 {
-                    connection.Open(); // 打开数据库连接
-                    string query = "SELECT * FROM Users WHERE UserName = @Username AND PasswordHash = @PasswordHash";
-                    using (var command = new SqliteCommand(query, connection))
+
+                    // 查询用户（注意：实际项目中应使用加密的密码比较）
+                    var user = context.Users
+                        .FirstOrDefault(u => u.Username == username);
+                    if (user == null)
                     {
-                        command.Parameters.AddWithValue("@Username", username);
-                        command.Parameters.AddWithValue("@PasswordHash", GetPasswordHash(password));
-                        using (var reader = command.ExecuteReader())
+                        MessageBox.Show("用户名不存在！");
+                        return;
+                    }
+                    // 验证密码（使用 BCrypt 比较哈希值）
+                    try 
+                    {
+                        if (string.IsNullOrEmpty(user.PasswordHash))
                         {
-                            if (reader.HasRows)
-                            {
-                                // 登录成功，跳转到主界面
-                                MainForm mainForm = new MainForm();
-                                mainForm.Show();
-                                this.Hide();
-                            }
-                            else
-                            {
-                                MessageBox.Show("用户名或密码错误", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show("密码哈希值无效！");
+                            return;
+                        }
+                        
+                        if (BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+                        {
+                            MessageBox.Show("登录成功！");
+
+                            // 存储当前用户信息
+                            CurrentUser.UserId = user.Id;
+                            CurrentUser.Username = user.Username;
+
+                            this.Hide();
+                            MainForm mainForm = new MainForm();
+                            mainForm.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("密码错误！");
                         }
                     }
-                }
-                catch (SqliteException ex)
-                {
-                    MessageBox.Show($"SQLite 错误: {ex.SqliteErrorCode}\n{ex.Message}");
-                    Debug.WriteLine(ex.StackTrace); // 输出完整堆栈信息
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"登录异常：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (BCrypt.Net.SaltParseException ex)
+                    {
+                        Debug.WriteLine($"BCrypt 盐值解析错误: {ex.Message}");
+                        MessageBox.Show("密码验证失败，请联系管理员！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"密码验证错误: {ex.Message}");
+                        MessageBox.Show("密码验证过程中发生错误！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"数据库错误：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //using (var connection = new SqliteConnection(_connectionString))
+            //{
+            //    try
+            //    {
+            //        connection.Open(); // 打开数据库连接
+            //        string query = "SELECT * FROM Users WHERE UserName = @Username AND PasswordHash = @PasswordHash";
+            //        using (var command = new SqliteCommand(query, connection))
+            //        {
+            //            command.Parameters.AddWithValue("@Username", username);
+            //            command.Parameters.AddWithValue("@PasswordHash", GetPasswordHash(password));
+            //            using (var reader = command.ExecuteReader())
+            //            {
+            //                if (reader.HasRows)
+            //                {
+            //                    // 登录成功，跳转到主界面
+            //                    MainForm mainForm = new MainForm();
+            //                    mainForm.Show();
+            //                    this.Hide();
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("用户名或密码错误", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                }
+            //            }
+            //        }
+            //    }
+            //    catch (SqliteException ex)
+            //    {
+            //        MessageBox.Show($"SQLite 错误: {ex.SqliteErrorCode}\n{ex.Message}");
+            //        Debug.WriteLine(ex.StackTrace); // 输出完整堆栈信息
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show($"登录异常：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
         }
         //密码加密
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)

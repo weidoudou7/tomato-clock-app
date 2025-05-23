@@ -34,6 +34,12 @@ namespace TomatoClockApp.Repository
         {
             return _context.Tasks.Find(id);
         }
+        public List<Task> GetTaskByDate(DateTime date)
+        {
+            return _context.Tasks
+                .Where(t => t.Deadline.Date == date.Date)
+                .ToList();
+        }
 
         public void UpdateTask(Task task)
         {
