@@ -9,5 +9,7 @@ namespace TomatoClockApp.Models
         public DateTime Deadline { get; set; }
         public bool IsCompleted { get; set; }
         public string? Category { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

@@ -107,12 +107,14 @@ namespace TomatoTaskApp.Views
             var taskRepository = new TaskRepository(_context);
             var templateController = new TaskTemplateController(templateRepository, taskRepository);
 
-            // 2. 获取当前用户ID（比如 CurrentUser.UserId）
+            // 2. 获取当前用户ID
             int currentUserId = CurrentUser.UserId;
 
-            // 3. 正确创建 CommunityForm
+            // 3. 创建并显示 CommunityForm
             var communityForm = new CommunityForm(templateController, currentUserId);
             communityForm.ShowDialog();
+            // 当CommunityForm关闭时刷新任务列表
+            LoadTasks();
         }
 
         private void btnLockScreen_Click(object sender, EventArgs e)
@@ -142,6 +144,12 @@ namespace TomatoTaskApp.Views
                 lvTasks.Items.Add(taskItem);
             }
         }
+
+        public void RefreshTasks()
+        {
+            LoadTasks();
+        }
+
         private void EditTask_Click(object sender, EventArgs e)
         {
             if (lvTasks.SelectedItems.Count > 0)

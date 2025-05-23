@@ -51,16 +51,16 @@
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
-            tabPage6 = new TabPage();
-            imageList1 = new ImageList(components);
-            editTask = new ToolStripMenuItem();
-            contextMenu = new ContextMenuStrip(components);
-            deleteTask = new ToolStripMenuItem();
             cmbSort = new ComboBox();
             btnUpload = new MaterialSkin.Controls.MaterialButton();
             btnMyTemplates = new MaterialSkin.Controls.MaterialButton();
             btnAllTemplates = new MaterialSkin.Controls.MaterialButton();
             flowPanel = new FlowLayoutPanel();
+            tabPage6 = new TabPage();
+            imageList1 = new ImageList(components);
+            editTask = new ToolStripMenuItem();
+            contextMenu = new ContextMenuStrip(components);
+            deleteTask = new ToolStripMenuItem();
             materialTabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage5.SuspendLayout();
@@ -300,6 +300,77 @@
             tabPage5.Text = "社区一览";
             tabPage5.UseVisualStyleBackColor = true;
             // 
+            // cmbSort
+            // 
+            cmbSort.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbSort.Items.AddRange(new object[] { "最新", "最多下载", "最多点赞" });
+            cmbSort.Location = new Point(166, 74);
+            cmbSort.Name = "cmbSort";
+            cmbSort.Size = new Size(150, 47);
+            cmbSort.TabIndex = 5;
+            // 
+            // btnUpload
+            // 
+            btnUpload.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnUpload.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnUpload.Depth = 0;
+            btnUpload.HighEmphasis = true;
+            btnUpload.Icon = null;
+            btnUpload.Location = new Point(451, 78);
+            btnUpload.Margin = new Padding(4, 6, 4, 6);
+            btnUpload.MouseState = MaterialSkin.MouseState.HOVER;
+            btnUpload.Name = "btnUpload";
+            btnUpload.NoAccentTextColor = Color.Empty;
+            btnUpload.Size = new Size(85, 36);
+            btnUpload.TabIndex = 6;
+            btnUpload.Text = "上传模板";
+            btnUpload.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnUpload.UseAccentColor = false;
+            // 
+            // btnMyTemplates
+            // 
+            btnMyTemplates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnMyTemplates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnMyTemplates.Depth = 0;
+            btnMyTemplates.HighEmphasis = true;
+            btnMyTemplates.Icon = null;
+            btnMyTemplates.Location = new Point(765, 78);
+            btnMyTemplates.Margin = new Padding(4, 6, 4, 6);
+            btnMyTemplates.MouseState = MaterialSkin.MouseState.HOVER;
+            btnMyTemplates.Name = "btnMyTemplates";
+            btnMyTemplates.NoAccentTextColor = Color.Empty;
+            btnMyTemplates.Size = new Size(85, 36);
+            btnMyTemplates.TabIndex = 7;
+            btnMyTemplates.Text = "我的模板";
+            btnMyTemplates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnMyTemplates.UseAccentColor = false;
+            // 
+            // btnAllTemplates
+            // 
+            btnAllTemplates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAllTemplates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAllTemplates.Depth = 0;
+            btnAllTemplates.HighEmphasis = true;
+            btnAllTemplates.Icon = null;
+            btnAllTemplates.Location = new Point(1059, 78);
+            btnAllTemplates.Margin = new Padding(4, 6, 4, 6);
+            btnAllTemplates.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAllTemplates.Name = "btnAllTemplates";
+            btnAllTemplates.NoAccentTextColor = Color.Empty;
+            btnAllTemplates.Size = new Size(85, 36);
+            btnAllTemplates.TabIndex = 8;
+            btnAllTemplates.Text = "全部模板";
+            btnAllTemplates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAllTemplates.UseAccentColor = false;
+            // 
+            // flowPanel
+            // 
+            flowPanel.AutoScroll = true;
+            flowPanel.Location = new Point(166, 123);
+            flowPanel.Name = "flowPanel";
+            flowPanel.Size = new Size(1149, 752);
+            flowPanel.TabIndex = 9;
+            // 
             // tabPage6
             // 
             tabPage6.ImageKey = "个人主页.png";
@@ -344,77 +415,6 @@
             deleteTask.Size = new Size(214, 46);
             deleteTask.Text = "删除任务";
             deleteTask.Click += DeleteTask_Click;
-            // 
-            // cmbSort
-            // 
-            cmbSort.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbSort.Items.AddRange(new object[] { "最新", "最多下载", "最多点赞" });
-            cmbSort.Location = new Point(166, 83);
-            cmbSort.Name = "cmbSort";
-            cmbSort.Size = new Size(150, 47);
-            cmbSort.TabIndex = 5;
-            // 
-            // btnUpload
-            // 
-            btnUpload.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnUpload.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnUpload.Depth = 0;
-            btnUpload.HighEmphasis = true;
-            btnUpload.Icon = null;
-            btnUpload.Location = new Point(346, 78);
-            btnUpload.Margin = new Padding(4, 6, 4, 6);
-            btnUpload.MouseState = MaterialSkin.MouseState.HOVER;
-            btnUpload.Name = "btnUpload";
-            btnUpload.NoAccentTextColor = Color.Empty;
-            btnUpload.Size = new Size(85, 36);
-            btnUpload.TabIndex = 6;
-            btnUpload.Text = "上传模板";
-            btnUpload.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnUpload.UseAccentColor = false;
-            // 
-            // btnMyTemplates
-            // 
-            btnMyTemplates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnMyTemplates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnMyTemplates.Depth = 0;
-            btnMyTemplates.HighEmphasis = true;
-            btnMyTemplates.Icon = null;
-            btnMyTemplates.Location = new Point(466, 78);
-            btnMyTemplates.Margin = new Padding(4, 6, 4, 6);
-            btnMyTemplates.MouseState = MaterialSkin.MouseState.HOVER;
-            btnMyTemplates.Name = "btnMyTemplates";
-            btnMyTemplates.NoAccentTextColor = Color.Empty;
-            btnMyTemplates.Size = new Size(85, 36);
-            btnMyTemplates.TabIndex = 7;
-            btnMyTemplates.Text = "我的模板";
-            btnMyTemplates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnMyTemplates.UseAccentColor = false;
-            // 
-            // btnAllTemplates
-            // 
-            btnAllTemplates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnAllTemplates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnAllTemplates.Depth = 0;
-            btnAllTemplates.HighEmphasis = true;
-            btnAllTemplates.Icon = null;
-            btnAllTemplates.Location = new Point(586, 78);
-            btnAllTemplates.Margin = new Padding(4, 6, 4, 6);
-            btnAllTemplates.MouseState = MaterialSkin.MouseState.HOVER;
-            btnAllTemplates.Name = "btnAllTemplates";
-            btnAllTemplates.NoAccentTextColor = Color.Empty;
-            btnAllTemplates.Size = new Size(85, 36);
-            btnAllTemplates.TabIndex = 8;
-            btnAllTemplates.Text = "全部模板";
-            btnAllTemplates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnAllTemplates.UseAccentColor = false;
-            // 
-            // flowPanel
-            // 
-            flowPanel.AutoScroll = true;
-            flowPanel.Location = new Point(166, 123);
-            flowPanel.Name = "flowPanel";
-            flowPanel.Size = new Size(940, 500);
-            flowPanel.TabIndex = 9;
             // 
             // MainForm
             // 
