@@ -9,6 +9,18 @@ namespace TomatoClockApp.Views
     public partial class TaskTemplateForm : MaterialForm
     {
         private readonly TaskTemplateController _templateController;
+        private DataGridView dgvTemplates;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private MaterialButton btnCreate;
+        private MaterialButton btnEdit;
+        private MaterialButton btnDelete;
+        private MaterialButton btnDownload;
         private readonly int _currentUserId;
 
         public TaskTemplateForm(TaskTemplateController templateController, int currentUserId)
@@ -21,66 +33,158 @@ namespace TomatoClockApp.Views
 
         private void InitializeComponent()
         {
-            this.Text = "任务模板管理";
-            this.Size = new System.Drawing.Size(800, 600);
-
-            // 创建控件
-            var dgvTemplates = new DataGridView
-            {
-                Dock = DockStyle.Fill,
-                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                MultiSelect = false
-            };
-
-            var btnCreate = new MaterialButton
-            {
-                Text = "创建模板",
-                Dock = DockStyle.Bottom
-            };
-
-            var btnEdit = new MaterialButton
-            {
-                Text = "编辑模板",
-                Dock = DockStyle.Bottom
-            };
-
-            var btnDelete = new MaterialButton
-            {
-                Text = "删除模板",
-                Dock = DockStyle.Bottom
-            };
-
-            var btnDownload = new MaterialButton
-            {
-                Text = "下载模板",
-                Dock = DockStyle.Bottom
-            };
-
-            // 添加列
-            dgvTemplates.Columns.AddRange(new DataGridViewColumn[]
-            {
-                new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "ID", Visible = false },
-                new DataGridViewTextBoxColumn { Name = "Title", HeaderText = "标题" },
-                new DataGridViewTextBoxColumn { Name = "Category", HeaderText = "分类" },
-                new DataGridViewTextBoxColumn { Name = "EstimatedPomodoros", HeaderText = "预计番茄数" },
-                new DataGridViewTextBoxColumn { Name = "Downloads", HeaderText = "下载次数" },
-                new DataGridViewTextBoxColumn { Name = "Likes", HeaderText = "点赞数" },
-                new DataGridViewCheckBoxColumn { Name = "IsPublic", HeaderText = "是否公开" }
-            });
-
-            // 添加事件处理
+            dgvTemplates = new DataGridView();
+            btnCreate = new MaterialButton();
+            btnEdit = new MaterialButton();
+            btnDelete = new MaterialButton();
+            btnDownload = new MaterialButton();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            dataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvTemplates).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvTemplates
+            // 
+            dgvTemplates.ColumnHeadersHeight = 58;
+            dgvTemplates.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewCheckBoxColumn1 });
+            dgvTemplates.Location = new Point(31, 78);
+            dgvTemplates.Name = "dgvTemplates";
+            dgvTemplates.RowHeadersWidth = 102;
+            dgvTemplates.Size = new Size(143, 136);
+            dgvTemplates.TabIndex = 0;
+            // 
+            // btnCreate
+            // 
+            btnCreate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCreate.Density = MaterialButton.MaterialButtonDensity.Default;
+            btnCreate.Depth = 0;
+            btnCreate.HighEmphasis = true;
+            btnCreate.Icon = null;
+            btnCreate.Location = new Point(0, 0);
+            btnCreate.Margin = new Padding(4, 6, 4, 6);
+            btnCreate.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCreate.Name = "btnCreate";
+            btnCreate.NoAccentTextColor = Color.Empty;
+            btnCreate.Size = new Size(64, 36);
+            btnCreate.TabIndex = 1;
+            btnCreate.Type = MaterialButton.MaterialButtonType.Contained;
+            btnCreate.UseAccentColor = false;
             btnCreate.Click += BtnCreate_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEdit.Density = MaterialButton.MaterialButtonDensity.Default;
+            btnEdit.Depth = 0;
+            btnEdit.HighEmphasis = true;
+            btnEdit.Icon = null;
+            btnEdit.Location = new Point(0, 0);
+            btnEdit.Margin = new Padding(4, 6, 4, 6);
+            btnEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            btnEdit.Name = "btnEdit";
+            btnEdit.NoAccentTextColor = Color.Empty;
+            btnEdit.Size = new Size(64, 36);
+            btnEdit.TabIndex = 2;
+            btnEdit.Type = MaterialButton.MaterialButtonType.Contained;
+            btnEdit.UseAccentColor = false;
             btnEdit.Click += BtnEdit_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDelete.Density = MaterialButton.MaterialButtonDensity.Default;
+            btnDelete.Depth = 0;
+            btnDelete.HighEmphasis = true;
+            btnDelete.Icon = null;
+            btnDelete.Location = new Point(0, 0);
+            btnDelete.Margin = new Padding(4, 6, 4, 6);
+            btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDelete.Name = "btnDelete";
+            btnDelete.NoAccentTextColor = Color.Empty;
+            btnDelete.Size = new Size(64, 36);
+            btnDelete.TabIndex = 3;
+            btnDelete.Type = MaterialButton.MaterialButtonType.Contained;
+            btnDelete.UseAccentColor = false;
             btnDelete.Click += BtnDelete_Click;
+            // 
+            // btnDownload
+            // 
+            btnDownload.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDownload.Density = MaterialButton.MaterialButtonDensity.Default;
+            btnDownload.Depth = 0;
+            btnDownload.HighEmphasis = true;
+            btnDownload.Icon = null;
+            btnDownload.Location = new Point(0, 0);
+            btnDownload.Margin = new Padding(4, 6, 4, 6);
+            btnDownload.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDownload.Name = "btnDownload";
+            btnDownload.NoAccentTextColor = Color.Empty;
+            btnDownload.Size = new Size(64, 36);
+            btnDownload.TabIndex = 4;
+            btnDownload.Type = MaterialButton.MaterialButtonType.Contained;
+            btnDownload.UseAccentColor = false;
             btnDownload.Click += BtnDownload_Click;
-
-            // 添加控件到窗体
-            this.Controls.Add(dgvTemplates);
-            this.Controls.Add(btnCreate);
-            this.Controls.Add(btnEdit);
-            this.Controls.Add(btnDelete);
-            this.Controls.Add(btnDownload);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.MinimumWidth = 12;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.MinimumWidth = 12;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.MinimumWidth = 12;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.MinimumWidth = 12;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.MinimumWidth = 12;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.MinimumWidth = 12;
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.Width = 250;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            dataGridViewCheckBoxColumn1.MinimumWidth = 12;
+            dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            dataGridViewCheckBoxColumn1.Width = 250;
+            // 
+            // TaskTemplateForm
+            // 
+            ClientSize = new Size(1464, 822);
+            Controls.Add(dgvTemplates);
+            Controls.Add(btnCreate);
+            Controls.Add(btnEdit);
+            Controls.Add(btnDelete);
+            Controls.Add(btnDownload);
+            Name = "TaskTemplateForm";
+            Text = "任务模板管理";
+            ((System.ComponentModel.ISupportInitialize)dgvTemplates).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private void LoadTemplates()

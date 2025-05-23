@@ -3,8 +3,11 @@
     partial class CommunityForm
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.TextBox txtPost;
-        private System.Windows.Forms.Button btnPost;
+        private System.Windows.Forms.FlowLayoutPanel flowPanel;
+        private System.Windows.Forms.ComboBox cmbSort;
+        private MaterialSkin.Controls.MaterialButton btnUpload;
+        private MaterialSkin.Controls.MaterialButton btnMyTemplates;
+        private MaterialSkin.Controls.MaterialButton btnAllTemplates;
 
         protected override void Dispose(bool disposing)
         {
@@ -15,41 +18,59 @@
             base.Dispose(disposing);
         }
 
-        //private void InitializeComponent()
-        //{
-        //    this.txtPost = new System.Windows.Forms.TextBox();
-        //    this.btnPost = new System.Windows.Forms.Button();
-        //    this.SuspendLayout();
-        //    // 
-        //    // txtPost
-        //    // 
-        //    this.txtPost.Location = new System.Drawing.Point(12, 12);
-        //    this.txtPost.Multiline = true;
-        //    this.txtPost.Name = "txtPost";
-        //    this.txtPost.Size = new System.Drawing.Size(276, 100);
-        //    this.txtPost.TabIndex = 0;
-        //    // 
-        //    // btnPost
-        //    // 
-        //    this.btnPost.Location = new System.Drawing.Point(12, 118);
-        //    this.btnPost.Name = "btnPost";
-        //    this.btnPost.Size = new System.Drawing.Size(276, 30);
-        //    this.btnPost.TabIndex = 1;
-        //    this.btnPost.Text = "发布帖子";
-        //    this.btnPost.UseVisualStyleBackColor = true;
-        //    this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
-        //    // 
-        //    // CommunityForm
-        //    // 
-        //    this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-        //    this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        //    this.ClientSize = new System.Drawing.Size(300, 160);
-        //    this.Controls.Add(this.btnPost);
-        //    this.Controls.Add(this.txtPost);
-        //    this.Name = "CommunityForm";
-        //    this.Text = "社区";
-        //    this.ResumeLayout(false);
-        //    this.PerformLayout();
-        //}
+        private void InitializeComponent()
+        {
+            this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.cmbSort = new System.Windows.Forms.ComboBox();
+            this.btnUpload = new MaterialSkin.Controls.MaterialButton();
+            this.btnMyTemplates = new MaterialSkin.Controls.MaterialButton();
+            this.btnAllTemplates = new MaterialSkin.Controls.MaterialButton();
+            this.SuspendLayout();
+            // 
+            // flowPanel
+            // 
+            this.flowPanel.Location = new System.Drawing.Point(20, 140);
+            this.flowPanel.Size = new System.Drawing.Size(940, 500);
+            this.flowPanel.AutoScroll = true;
+            this.flowPanel.WrapContents = true;
+            this.flowPanel.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            // 
+            // cmbSort
+            // 
+            this.cmbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSort.Location = new System.Drawing.Point(20, 100);
+            this.cmbSort.Width = 150;
+            this.cmbSort.Items.AddRange(new object[] { "最新", "最多下载", "最多点赞" });
+            this.cmbSort.SelectedIndex = 0;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Text = "上传模板";
+            this.btnUpload.Location = new System.Drawing.Point(200, 95);
+            this.btnUpload.Width = 100;
+            // 
+            // btnMyTemplates
+            // 
+            this.btnMyTemplates.Text = "我的模板";
+            this.btnMyTemplates.Location = new System.Drawing.Point(320, 95);
+            this.btnMyTemplates.Width = 100;
+            // 
+            // btnAllTemplates
+            // 
+            this.btnAllTemplates.Text = "全部模板";
+            this.btnAllTemplates.Location = new System.Drawing.Point(440, 95);
+            this.btnAllTemplates.Width = 100;
+            // 
+            // CommunityForm
+            // 
+            this.Text = "社区任务模板";
+            this.ClientSize = new System.Drawing.Size(1000, 700);
+            this.Controls.Add(this.cmbSort);
+            this.Controls.Add(this.btnUpload);
+            this.Controls.Add(this.btnMyTemplates);
+            this.Controls.Add(this.btnAllTemplates);
+            this.Controls.Add(this.flowPanel);
+            this.ResumeLayout(false);
+        }
     }
 }

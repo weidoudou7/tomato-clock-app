@@ -13,11 +13,6 @@ namespace TomatoClockApp.Views
     {
         private readonly TaskTemplateController _templateController;
         private readonly int _currentUserId;
-        private FlowLayoutPanel flowPanel;
-        private ComboBox cmbSort;
-        private MaterialButton btnUpload;
-        private MaterialButton btnMyTemplates;
-        private MaterialButton btnAllTemplates;
         private bool showMyTemplates = false;
 
         public CommunityForm(TaskTemplateController templateController, int currentUserId)
@@ -25,66 +20,13 @@ namespace TomatoClockApp.Views
             _templateController = templateController;
             _currentUserId = currentUserId;
             InitializeComponent();
-            LoadTemplates();
-        }
-
-        private void InitializeComponent()
-        {
-            this.Text = "社区任务模板";
-            this.Size = new Size(1000, 700);
-
-            // 排序下拉框
-            cmbSort = new ComboBox
-            {
-                DropDownStyle = ComboBoxStyle.DropDownList,
-                Location = new Point(20, 100),
-                Width = 150
-            };
-            cmbSort.Items.AddRange(new string[] { "最新", "最多下载", "最多点赞" });
-            cmbSort.SelectedIndex = 0;
+            // 事件绑定
             cmbSort.SelectedIndexChanged += (s, e) => LoadTemplates();
-            this.Controls.Add(cmbSort);
-
-            // 上传模板按钮
-            btnUpload = new MaterialButton
-            {
-                Text = "上传模板",
-                Location = new Point(200, 95),
-                Width = 100
-            };
             btnUpload.Click += BtnUpload_Click;
-            this.Controls.Add(btnUpload);
-
-            // 我的模板按钮
-            btnMyTemplates = new MaterialButton
-            {
-                Text = "我的模板",
-                Location = new Point(320, 95),
-                Width = 100
-            };
             btnMyTemplates.Click += (s, e) => { showMyTemplates = true; LoadTemplates(); };
-            this.Controls.Add(btnMyTemplates);
-
-            // 全部模板按钮
-            btnAllTemplates = new MaterialButton
-            {
-                Text = "全部模板",
-                Location = new Point(440, 95),
-                Width = 100
-            };
             btnAllTemplates.Click += (s, e) => { showMyTemplates = false; LoadTemplates(); };
-            this.Controls.Add(btnAllTemplates);
-
-            // 卡片流式面板
-            flowPanel = new FlowLayoutPanel
-            {
-                Location = new Point(20, 60),
-                Size = new Size(940, 600),
-                AutoScroll = true,
-                WrapContents = true,
-                FlowDirection = FlowDirection.LeftToRight
-            };
-            this.Controls.Add(flowPanel);
+            // 初始化模板列表
+            LoadTemplates();
         }
 
         private void LoadTemplates()
