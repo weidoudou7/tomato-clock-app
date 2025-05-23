@@ -8,8 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TomatoClockApp.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-
+using TomatoClockApp.Models;
 namespace TomatoTaskDemo.Views
 {
     public partial class SignupForm : Form
@@ -76,37 +77,63 @@ namespace TomatoTaskDemo.Views
             }
             try
             {
-                using (var connection = new SqliteConnection(_connectionString))
+                using (var context = new AppDbContext())
                 {
-                    connection.Open();
-
                     // 检查用户名是否已存在
-                    var checkCmd = connection.CreateCommand();
-                    checkCmd.CommandText = "SELECT COUNT(*) FROM Users WHERE UserName = @UserName";
-                    checkCmd.Parameters.AddWithValue("@UserName", username);
-
-                    if ((long)checkCmd.ExecuteScalar() > 0)
+                    if (context.Users.Any(u => u.Username == username))
                     {
-                        MessageBox.Show("用户名已存在", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("用户名已存在！");
                         return;
                     }
 
-                    // 插入新用户
-                    var insertCmd = connection.CreateCommand();
-                    insertCmd.CommandText = @"
-                        INSERT INTO Users (UserName, PasswordHash, Email, CreateTime)
-                        VALUES (@UserName, @PasswordHash, @Email, CURRENT_TIMESTAMP)
-                    ";
-                    insertCmd.Parameters.AddWithValue("@UserName", username);
-                    insertCmd.Parameters.AddWithValue("@PasswordHash", GetPasswordHash(password));
-                    insertCmd.Parameters.AddWithValue("@Email", email);
+                    // 创建新用户
+                    var user = new User
+                    {
+                        Username = username,
+                        PasswordHash = BCrypt.Net.BCrypt.HashPassword(password), // 加密密码
+                        Email = email
+                    };
 
-                    insertCmd.ExecuteNonQuery();
+                    context.Users.Add(user);
+                    context.SaveChanges();
 
-                    MessageBox.Show("注册成功，请登录", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close(); // 关闭注册窗体
+                    MessageBox.Show("注册成功，请登录！");
+                    this.Close();
                 }
             }
+            //try
+            //{
+            //    using (var connection = new SqliteConnection(_connectionString))
+            //    {
+            //        connection.Open();
+
+            //        // 检查用户名是否已存在
+            //        var checkCmd = connection.CreateCommand();
+            //        checkCmd.CommandText = "SELECT COUNT(*) FROM Users WHERE UserName = @UserName";
+            //        checkCmd.Parameters.AddWithValue("@UserName", username);
+
+            //        if ((long)checkCmd.ExecuteScalar() > 0)
+            //        {
+            //            MessageBox.Show("用户名已存在", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            return;
+            //        }
+
+            //        // 插入新用户
+            //        var insertCmd = connection.CreateCommand();
+            //        insertCmd.CommandText = @"
+            //            INSERT INTO Users (UserName, PasswordHash, Email, CreateTime)
+            //            VALUES (@UserName, @PasswordHash, @Email, CURRENT_TIMESTAMP)
+            //        ";
+            //        insertCmd.Parameters.AddWithValue("@UserName", username);
+            //        insertCmd.Parameters.AddWithValue("@PasswordHash", GetPasswordHash(password));
+            //        insertCmd.Parameters.AddWithValue("@Email", email);
+
+            //        insertCmd.ExecuteNonQuery();
+
+            //        MessageBox.Show("注册成功，请登录", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        this.Close(); // 关闭注册窗体
+            //    }
+            //}
             catch (Exception ex)
             {
                 MessageBox.Show($"注册失败：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);

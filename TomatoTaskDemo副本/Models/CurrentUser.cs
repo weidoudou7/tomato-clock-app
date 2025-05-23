@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TomatoTaskDemo.Models
+namespace TomatoClockApp.Models
 {
     internal class CurrentUser
     {
