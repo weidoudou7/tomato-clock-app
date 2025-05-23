@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TomatoClockApp.Controllers;
 using TomatoClockApp.Services;
+using TomatoTaskDemo.CustomerControl;
 using TomatoTaskDemo.Views;
-using WindowsFormsControlLibrary;
+//using WindowsFormsControlLibrary;
 
 namespace TomatoTaskDemo.Services
 {
@@ -46,7 +47,7 @@ namespace TomatoTaskDemo.Services
             {
                 i = (i + 1) % 5 + 1;
                 string path = basepath + i.ToString() + ".jpg";
-                taskControls.Add(new TaskControl(task.Id, task.Name, task.Deadline, task.IsCompleted, task.Category) { BackgroundImage = Image.FromFile(path) });
+                taskControls.Add(new TaskControl(task.Id, task.Name, task.Deadline, task.IsCompleted, task.Category,panel1.Width) { BackgroundImage = Image.FromFile(path) });
             }
         }
 

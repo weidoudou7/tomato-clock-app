@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TomatoClockApp.Controllers;
-using WindowsFormsControlLibrary;
+using TomatoTaskDemo.CustomerControl;
+//using WindowsFormsControlLibrary;
 
 namespace TomatoTaskDemo.Views
 {

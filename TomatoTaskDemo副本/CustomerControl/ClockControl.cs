@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsControlLibrary
+namespace TomatoTaskDemo.CustomerControl
 {
-    public partial class ClockControl : UserControl
+    public partial class ClockControl : Control
     {
+
         // 常量定义
         private const int SIN_WAVE_COUNT = 12;//波形数量
         private const float HOUR_HAND_LENGTH = 0.4f;
@@ -230,5 +231,7 @@ namespace WindowsFormsControlLibrary
                 center.X + radius * (float)Math.Cos(radians),
                 center.Y + radius * (float)Math.Sin(radians));
         }
+
+
     }
 }

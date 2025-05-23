@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsControlLibrary
+namespace TomatoTaskDemo.CustomerControl
 {
-    public partial class TaskControl : UserControl, IComparable
+    public partial class TaskControl : Control, IComparable
     {
         private int id;
         private string name;
@@ -27,7 +27,6 @@ namespace WindowsFormsControlLibrary
             get { return id; }
             set { id = value; }
         }
-
         public string Name
         {
             get { return name; }
@@ -52,7 +51,7 @@ namespace WindowsFormsControlLibrary
             get { return category; }
             set { category = value; lblCategory.Text = "分类：" + Category; }
         }
-        public TaskControl(int id, String name, DateTime deadline, bool isCompleted, string category)
+        public TaskControl(int id, String name, DateTime deadline, bool isCompleted, string category, int width)
         {
             InitializeComponent();
             this.id = id;
@@ -60,6 +59,8 @@ namespace WindowsFormsControlLibrary
             Deadline = deadline;
             IsCompleted = isCompleted;
             Category = category;
+
+            this.Size = new Size(width - 25, (width - 25) / 4);
 
             SetStyle(ControlStyles.ResizeRedraw, true);
             DoubleBuffered = true;
@@ -92,29 +93,58 @@ namespace WindowsFormsControlLibrary
             path.CloseFigure();
             return path;
         }
-        private void UpdateDisplay()
-        {
-            // 实时更新布局
-            UpdateLayout();
-        }
         private void UpdateLayout()
         {
-            // 分类标签居中
-            lblCategory.Size = new Size(120, 20);
-            lblCategory.Location = new Point(
-                (Width - lblCategory.Width) / 2,
-                (Height - lblCategory.Height) / 2
+            // 任务名称靠左上角
+            lblName.Location = new Point(10, 10);
+
+            // 截止时间靠左下角
+            lblDeadline.Location = new Point(10, Height - lblDeadline.Height - 10);
+
+            int extraWidth = 10; // 额外的宽度，用于间距
+
+            // 完成状态居中靠右
+            chkCompleted.Location = new Point(
+                Width / 2 + extraWidth,
+                Height / 2 - chkCompleted.Height / 2
             );
 
-            //// 完成状态靠右居中
-            //chkCompleted.Location = new Point(
-            //    Width - chkCompleted.Width - 15,
-            //    (Height - chkCompleted.Height) / 2
-            //);
+            // 分类标签居中靠左
+            lblCategory.Location = new Point(
+                Width / 2 - lblCategory.Width - extraWidth,
+                Height / 2 - lblCategory.Height / 2
+            );
+
+            //按钮位置靠右中间
+            btnComp.Location = new Point(
+                Width - btnComp.Width - extraWidth,
+                Height / 2 - btnComp.Height / 2
+            );
+
+        }
+
+        private void UpdateSize()
+        {
+            float rate = Size.Width / 385f;
+
+            //将当前控件的大小设置为原来的rate倍
+            lblName.Font = new Font(lblName.Font.FontFamily, lblName.Font.Size * rate, lblName.Font.Style);
+            lblDeadline.Font = new Font(lblDeadline.Font.FontFamily, lblDeadline.Font.Size * rate, lblDeadline.Font.Style);
+            lblCategory.Font = new Font(lblCategory.Font.FontFamily, lblCategory.Font.Size * rate, lblCategory.Font.Style);
+            chkCompleted.Font = new Font(chkCompleted.Font.FontFamily, chkCompleted.Font.Size * rate, chkCompleted.Font.Style);
+            btnComp.Font = new Font(btnComp.Font.FontFamily, btnComp.Font.Size * rate, btnComp.Font.Style);
+
+            lblName.Size = new Size((int)(lblName.Width * rate), (int)(lblName.Height * rate));
+            lblDeadline.Size = new Size((int)(lblDeadline.Width * rate), (int)(lblDeadline.Height * rate));
+            lblCategory.Size = new Size((int)(lblCategory.Width * rate), (int)(lblCategory.Height * rate));
+            chkCompleted.Size = new Size((int)(chkCompleted.Width * rate), (int)(chkCompleted.Height * rate));
+            btnComp.Size = new Size((int)(btnComp.Width * rate * 0.8f), (int)(btnComp.Height * rate));
+
         }
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
+            UpdateSize();
             UpdateLayout();
             Invalidate();  // 重绘圆角
         }
