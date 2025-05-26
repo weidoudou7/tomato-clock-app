@@ -14,28 +14,45 @@ using WindowsFormsControlLibrary;
 
 namespace TomatoTaskDemo.Services
 {
-    public partial class BeginTask : Form
+    public partial class BeginTaskForm : Form
     {
         List<TomatoClockApp.Models.Task> tasks = new List<TomatoClockApp.Models.Task>();
         List<TaskControl> taskControls = new List<TaskControl>();
         TaskController taskController;
         TimerController timerController;
         TimerForm timerForm;
-        public BeginTask(TaskController t, TimerController timerController)
+        //public BeginTaskForm(TaskController t, TimerController timerController)
+        //{
+        //    taskController = t;
+        //    tasks = t.GetTasks();
+        //    this.timerController = timerController;
+
+        //    InitializeComponent();
+
+        //    InitializeTackControls();
+
+        //    foreach (var taskControl in taskControls)
+        //    {
+        //        taskControl.btnClick += SeletTask;
+        //    }
+        //    InitializePanel1();
+        //}
+        public BeginTaskForm(TaskController taskController, TimerController timerController)
         {
-            taskController = t;
-            tasks = t.GetTasks();
+            InitializeComponent();
+            this.taskController = taskController;
             this.timerController = timerController;
 
-            InitializeComponent();
-
+            // 直接初始化数据
+            tasks = taskController.GetTasks();
             InitializeTackControls();
+            InitializePanel1();
 
+            // 绑定控件事件
             foreach (var taskControl in taskControls)
             {
                 taskControl.btnClick += SeletTask;
             }
-            InitializePanel1();
         }
 
         public void InitializeTackControls()
@@ -114,5 +131,14 @@ namespace TomatoTaskDemo.Services
             }
         }
 
+        private void BeginTaskForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

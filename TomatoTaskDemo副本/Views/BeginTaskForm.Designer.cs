@@ -1,6 +1,6 @@
 ﻿namespace TomatoTaskDemo.Services
 {
-    partial class BeginTask
+    partial class BeginTaskForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,15 +42,17 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(600, 800);
+            panel1.Padding = new Padding(60, 0, 0, 0);
+            panel1.Size = new Size(600, 833);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // countUp
             // 
             countUp.AutoSize = true;
-            countUp.Location = new Point(724, 282);
+            countUp.Location = new Point(724, 294);
             countUp.Name = "countUp";
-            countUp.Size = new Size(89, 28);
+            countUp.Size = new Size(94, 29);
             countUp.TabIndex = 2;
             countUp.TabStop = true;
             countUp.Text = "正计时";
@@ -60,9 +62,9 @@
             // countDown
             // 
             countDown.AutoSize = true;
-            countDown.Location = new Point(1023, 282);
+            countDown.Location = new Point(1023, 294);
             countDown.Name = "countDown";
-            countDown.Size = new Size(89, 28);
+            countDown.Size = new Size(94, 29);
             countDown.TabIndex = 3;
             countDown.TabStop = true;
             countDown.Text = "倒计时";
@@ -73,10 +75,10 @@
             // 
             downTime.CustomFormat = "HH:mm:ss";
             downTime.Format = DateTimePickerFormat.Time;
-            downTime.Location = new Point(967, 371);
+            downTime.Location = new Point(967, 386);
             downTime.Name = "downTime";
             downTime.ShowUpDown = true;
-            downTime.Size = new Size(300, 30);
+            downTime.Size = new Size(300, 32);
             downTime.TabIndex = 4;
             downTime.Value = new DateTime(2025, 5, 19, 0, 0, 0, 0);
             downTime.Visible = false;
@@ -84,9 +86,9 @@
             // 
             // btnStart
             // 
-            btnStart.Location = new Point(870, 477);
+            btnStart.Location = new Point(870, 497);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(204, 71);
+            btnStart.Size = new Size(204, 74);
             btnStart.TabIndex = 5;
             btnStart.Text = "开始计时";
             btnStart.UseVisualStyleBackColor = true;
@@ -94,24 +96,26 @@
             // 
             // panel2
             // 
-            panel2.Location = new Point(714, 37);
+            panel2.Location = new Point(714, 39);
             panel2.Name = "panel2";
-            panel2.Size = new Size(600, 180);
+            panel2.Padding = new Padding(0, 0, 20, 0);
+            panel2.Size = new Size(600, 188);
             panel2.TabIndex = 6;
             // 
-            // BeginTask
+            // BeginTaskForm
             // 
-            AutoScaleDimensions = new SizeF(11F, 24F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1400, 800);
+            ClientSize = new Size(1400, 833);
             Controls.Add(panel2);
             Controls.Add(btnStart);
             Controls.Add(downTime);
             Controls.Add(countDown);
             Controls.Add(countUp);
             Controls.Add(panel1);
-            Name = "BeginTask";
+            Name = "BeginTaskForm";
             Text = "BeginTask";
+            Load += BeginTaskForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

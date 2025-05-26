@@ -27,6 +27,8 @@ namespace TomatoTaskApp.Views
         private readonly AppDbContext _context;
         private TaskTemplateController _templateController;
         private bool showMyTemplates = false;
+        private CalendarForm _calendarForm;
+        private BeginTaskForm _beginTaskForm;
 
         public MainForm()
         {
@@ -61,6 +63,8 @@ namespace TomatoTaskApp.Views
 
             // 初始化模板列表
             LoadTemplates();
+            // 订阅 TabControl 的 SelectedIndexChanged 事件
+            materialTabControl1.SelectedIndexChanged += materialTabControl1_SelectedIndexChanged;
         }
         private void btnAddTask_Click(object sender, EventArgs e)
         {
@@ -72,7 +76,7 @@ namespace TomatoTaskApp.Views
         private void btnStartTimer_Click(object sender, EventArgs e)
         {
             //timerController.Start();
-            BeginTask beginTask = new BeginTask(taskController, timerController);
+            BeginTaskForm beginTask = new BeginTaskForm(taskController, timerController);
             beginTask.ShowDialog();
         }
 
@@ -309,7 +313,7 @@ namespace TomatoTaskApp.Views
                 {
                     var template = new TaskTemplate
                     {
-                        Title = form.Title,
+                        Title = form.Title, 
                         Description = form.Description,
                         Category = form.Category,
                         EstimatedPomodoros = form.EstimatedPomodoros,
@@ -322,5 +326,56 @@ namespace TomatoTaskApp.Views
                 }
             }
         }
+
+        // Tab 切换事件处理函数
+        private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (materialTabControl1.SelectedTab == tabPage2)
+            {
+                InitializeCalendarTab();
+            }
+            if (materialTabControl1.SelectedTab == tabPage3)
+            {
+                InitializeBeginTaskTab();
+            }
+        }
+
+        // 初始化日历 Tab 页
+        private void InitializeCalendarTab()
+        {
+            // 清理旧控件
+            tabPage2.Controls.Clear();
+
+            // 创建并嵌入 CalendarForm
+            _calendarForm = new CalendarForm(taskController)
+            {
+                TopLevel = false,       // 关键：设置为非顶级窗口
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill   // 填充整个 TabPage
+            };
+
+            // 将窗体添加到 TabPage
+            tabPage2.Controls.Add(_calendarForm);
+            _calendarForm.Show(); // 显示窗体
+        }
+        // 初始化任务开始 Tab 页
+        private void InitializeBeginTaskTab()
+        {
+            // 清理旧控件
+            tabPage3.Controls.Clear();
+
+            // 创建并嵌入 BeginTaskForm
+            _beginTaskForm = new BeginTaskForm(taskController, timerController)
+            {
+                TopLevel = false,        // 关键：非顶级窗口
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill    // 填充整个 TabPage
+            };
+
+            // 将窗体添加到 TabPage
+            tabPage3.Controls.Add(_beginTaskForm);
+            _beginTaskForm.Show(); // 显示窗体
+        }
+
     }
 }

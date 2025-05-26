@@ -2,12 +2,17 @@
 {
     partial class CalendarForm
     {
+
+
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.ListView lvTasks;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+
+        // 定义所有控件
+        private Label lblMonthYear;
+        private Label lblToday;
+        private TableLayoutPanel weekDaysPanel;
+        private FlowLayoutPanel taskPanel;
+        private Button btnAddTask;
+
 
         protected override void Dispose(bool disposing)
         {
@@ -20,58 +25,100 @@
 
         private void InitializeComponent()
         {
-            this.lvTasks = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-            this.SuspendLayout();
+            lblMonthYear = new Label();
+            lblToday = new Label();
+            weekDaysPanel = new TableLayoutPanel();
+            taskPanel = new FlowLayoutPanel();
+            btnAddTask = new Button();
+            SuspendLayout();
             // 
-            // lvTasks
+            // lblMonthYear
             // 
-            this.lvTasks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lvTasks.FullRowSelect = true;
-            this.lvTasks.GridLines = true;
-            this.lvTasks.Location = new System.Drawing.Point(12, 12);
-            this.lvTasks.Name = "lvTasks";
-            this.lvTasks.Size = new System.Drawing.Size(776, 237);
-            this.lvTasks.TabIndex = 0;
-            this.lvTasks.UseCompatibleStateImageBehavior = false;
-            this.lvTasks.View = System.Windows.Forms.View.Details;
+            lblMonthYear.AutoSize = true;
+            lblMonthYear.Font = new Font("微软雅黑", 14F, FontStyle.Bold);
+            lblMonthYear.Location = new Point(68, 41);
+            lblMonthYear.Margin = new Padding(6, 0, 6, 0);
+            lblMonthYear.Name = "lblMonthYear";
+            lblMonthYear.Size = new Size(0, 37);
+            lblMonthYear.TabIndex = 0;
             // 
-            // columnHeader1
+            // lblToday
             // 
-            this.columnHeader1.Text = "任务名称";
-            this.columnHeader1.Width = 200;
+            lblToday.AutoSize = true;
+            lblToday.Font = new Font("微软雅黑", 10F);
+            lblToday.ForeColor = Color.Gray;
+            lblToday.Location = new Point(449, 51);
+            lblToday.Margin = new Padding(6, 0, 6, 0);
+            lblToday.Name = "lblToday";
+            lblToday.Size = new Size(52, 27);
+            lblToday.TabIndex = 1;
+            lblToday.Text = "今天";
             // 
-            // columnHeader2
+            // weekDaysPanel
             // 
-            this.columnHeader2.Text = "截止时间";
-            this.columnHeader2.Width = 150;
+            weekDaysPanel.ColumnCount = 7;
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.Location = new Point(68, 124);
+            weekDaysPanel.Margin = new Padding(6);
+            weekDaysPanel.Name = "weekDaysPanel";
+            weekDaysPanel.RowCount = 1;
+            weekDaysPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            weekDaysPanel.Size = new Size(1027, 83);
+            weekDaysPanel.TabIndex = 2;
+            weekDaysPanel.Paint += weekDaysPanel_Paint;
             // 
-            // columnHeader3
+            // taskPanel
             // 
-            this.columnHeader3.Text = "分类";
-            this.columnHeader3.Width = 100;
+            taskPanel.AutoScroll = true;
+            taskPanel.FlowDirection = FlowDirection.TopDown;
+            taskPanel.Location = new Point(68, 249);
+            taskPanel.Margin = new Padding(6);
+            taskPanel.Name = "taskPanel";
+            taskPanel.Padding = new Padding(18, 21, 18, 21);
+            taskPanel.Size = new Size(1027, 833);
+            taskPanel.TabIndex = 3;
+            taskPanel.WrapContents = false;
+            taskPanel.Paint += taskPanel_Paint;
             // 
-            // columnHeader4
+            // btnAddTask
             // 
-            this.columnHeader4.Text = "状态";
-            this.columnHeader4.Width = 100;
+            btnAddTask.BackColor = Color.White;
+            btnAddTask.FlatAppearance.BorderColor = Color.DodgerBlue;
+            btnAddTask.FlatStyle = FlatStyle.Flat;
+            btnAddTask.Font = new Font("微软雅黑", 10F);
+            btnAddTask.ForeColor = Color.DodgerBlue;
+            btnAddTask.Location = new Point(68, 1103);
+            btnAddTask.Margin = new Padding(6);
+            btnAddTask.Name = "btnAddTask";
+            btnAddTask.Size = new Size(183, 62);
+            btnAddTask.TabIndex = 4;
+            btnAddTask.Text = "添加任务";
+            btnAddTask.UseVisualStyleBackColor = false;
+            btnAddTask.Click += btnAddTask_Click;
             // 
             // CalendarForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 261);
-            this.Controls.Add(this.lvTasks);
-            this.Name = "CalendarForm";
-            this.Text = "日历视图";
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(1100, 1050);
+            Controls.Add(lblMonthYear);
+            Controls.Add(lblToday);
+            Controls.Add(weekDaysPanel);
+            Controls.Add(taskPanel);
+            Controls.Add(btnAddTask);
+            Margin = new Padding(6);
+            Name = "CalendarForm";
+            Text = "日历";
+            ResumeLayout(false);
+            PerformLayout();
         }
+
     }
 }
