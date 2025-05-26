@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using TomatoClockApp.Data;
@@ -16,13 +17,22 @@ namespace TomatoClockApp.Repository
             _context = context;
         }
 
+        public List<Task> GetTasksByUserId(int userId)
+        {
+            return _context.Tasks
+                .Where(t => t.UserId == userId)
+                .ToList();
+        }
+
+        public Task GetTaskById(int id)
+        {
+            return _context.Tasks.Find(id);
+        }
+
         public void AddTask(Task task)
         {
-            using (var context = new AppDbContext())
-            {
-                context.Tasks.Add(task);
-                context.SaveChanges();
-            }
+            _context.Tasks.Add(task);
+            _context.SaveChanges();
         }
 
         public List<Task> GetAllTasks()
@@ -30,10 +40,6 @@ namespace TomatoClockApp.Repository
             return _context.Tasks.ToList();
         }
 
-        public Task GetTaskById(int id)
-        {
-            return _context.Tasks.Find(id);
-        }
         public List<Task> GetTaskByDate(DateTime date)
         {
             return _context.Tasks
@@ -43,7 +49,7 @@ namespace TomatoClockApp.Repository
 
         public void UpdateTask(Task task)
         {
-            _context.Tasks.Update(task);
+            _context.Entry(task).State = EntityState.Modified;
             _context.SaveChanges();
         }
 

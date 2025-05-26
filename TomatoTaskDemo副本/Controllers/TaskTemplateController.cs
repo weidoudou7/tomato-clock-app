@@ -65,7 +65,8 @@ namespace TomatoClockApp.Controllers
                 Name = template.Title,
                 Category = template.Category,
                 Deadline = DateTime.Now.AddDays(7), // 默认一周后截止
-                IsCompleted = false
+                IsCompleted = false,
+                UserId = userId  // 设置用户ID
             };
 
             _taskRepository.AddTask(task);

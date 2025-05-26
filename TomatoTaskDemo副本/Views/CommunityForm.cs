@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using TomatoClockApp.Controllers;
 using TomatoClockApp.Models;
 using MaterialSkin.Controls;
-
+using TomatoTaskApp.Views;
 namespace TomatoClockApp.Views
 {
     public partial class CommunityForm : MaterialForm
@@ -127,7 +127,17 @@ namespace TomatoClockApp.Views
                     Location = new Point(btnX, btnY),
                     Width = 60
                 };
-                btnDownload.Click += (s, e) => { _templateController.DownloadTemplate(template.Id, _currentUserId); MessageBox.Show("已下载到我的任务"); };
+                btnDownload.Click += (s, e) => 
+                { 
+                    _templateController.DownloadTemplate(template.Id, _currentUserId); 
+                    MessageBox.Show("已下载到我的任务");
+                    // 获取主窗体并刷新任务列表
+                    var mainForm = Application.OpenForms.OfType<MainForm>().FirstOrDefault();
+                    if (mainForm != null)
+                    {
+                        mainForm.RefreshTasks();
+                    }
+                };
                 card.Controls.Add(btnDownload);
                 btnX += 70;
 
