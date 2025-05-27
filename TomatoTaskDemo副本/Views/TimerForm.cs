@@ -32,6 +32,10 @@ namespace TomatoTaskDemo.Views
 
             panel1.Controls.Add(clockContorl);
 
+            this.FormClosing += (s,e) =>
+            {
+                timerController.Stop();
+            };
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
