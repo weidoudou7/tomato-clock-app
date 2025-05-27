@@ -28,80 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblDeadline = new System.Windows.Forms.Label();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.btnComp = new System.Windows.Forms.Button();
-            this.chkCompleted = new System.Windows.Forms.CheckBox();
-            this.SuspendLayout();
+            lblName = new Label();
+            lblDeadline = new Label();
+            lblCategory = new Label();
+            btnComp = new Button();
+            chkCompleted = new CheckBox();
+            SuspendLayout();
             // 
             // lblName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.BackColor = System.Drawing.Color.Transparent;
-            this.lblName.Location = new System.Drawing.Point(10, 8);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(62, 18);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "label1";
+            lblName.AutoSize = true;
+            lblName.BackColor = Color.Transparent;
+            lblName.Location = new Point(10, 8);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(67, 25);
+            lblName.TabIndex = 0;
+            lblName.Text = "label1";
             // 
             // lblDeadline
             // 
-            this.lblDeadline.AutoSize = true;
-            this.lblDeadline.BackColor = System.Drawing.Color.Transparent;
-            this.lblDeadline.Location = new System.Drawing.Point(10, 47);
-            this.lblDeadline.Name = "lblDeadline";
-            this.lblDeadline.Size = new System.Drawing.Size(62, 18);
-            this.lblDeadline.TabIndex = 1;
-            this.lblDeadline.Text = "label1";
+            lblDeadline.AutoSize = true;
+            lblDeadline.BackColor = Color.Transparent;
+            lblDeadline.Location = new Point(10, 47);
+            lblDeadline.Name = "lblDeadline";
+            lblDeadline.Size = new Size(67, 25);
+            lblDeadline.TabIndex = 1;
+            lblDeadline.Text = "label1";
             // 
             // lblCategory
             // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.BackColor = System.Drawing.Color.Transparent;
-            this.lblCategory.Location = new System.Drawing.Point(131, 36);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(62, 18);
-            this.lblCategory.TabIndex = 2;
-            this.lblCategory.Text = "label1";
-            this.lblCategory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblCategory.AutoSize = true;
+            lblCategory.BackColor = Color.Transparent;
+            lblCategory.Location = new Point(131, 36);
+            lblCategory.Name = "lblCategory";
+            lblCategory.Size = new Size(67, 25);
+            lblCategory.TabIndex = 2;
+            lblCategory.Text = "label1";
+            lblCategory.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnComp
             // 
-            this.btnComp.BackColor = System.Drawing.Color.Transparent;
-            this.btnComp.Location = new System.Drawing.Point(331, 26);
-            this.btnComp.Name = "btnComp";
-            this.btnComp.Size = new System.Drawing.Size(94, 38);
-            this.btnComp.TabIndex = 3;
-            this.btnComp.Text = "去完成";
-            this.btnComp.UseVisualStyleBackColor = false;
-            this.btnComp.Click += new System.EventHandler(this.btnComp_Click);
+            btnComp.BackColor = Color.Transparent;
+            btnComp.Location = new Point(343, 69);
+            btnComp.Name = "btnComp";
+            btnComp.Size = new Size(94, 38);
+            btnComp.TabIndex = 3;
+            btnComp.Text = "去完成";
+            btnComp.UseVisualStyleBackColor = false;
+            btnComp.Click += btnComp_Click;
             // 
             // chkCompleted
             // 
-            this.chkCompleted.AutoCheck = false;
-            this.chkCompleted.AutoSize = true;
-            this.chkCompleted.BackColor = System.Drawing.Color.Transparent;
-            this.chkCompleted.Location = new System.Drawing.Point(228, 36);
-            this.chkCompleted.Name = "chkCompleted";
-            this.chkCompleted.Size = new System.Drawing.Size(22, 21);
-            this.chkCompleted.TabIndex = 4;
-            this.chkCompleted.UseVisualStyleBackColor = false;
+            chkCompleted.AutoCheck = false;
+            chkCompleted.AutoSize = true;
+            chkCompleted.BackColor = Color.Transparent;
+            chkCompleted.Location = new Point(343, 22);
+            chkCompleted.Name = "chkCompleted";
+            chkCompleted.Size = new Size(22, 21);
+            chkCompleted.TabIndex = 4;
+            chkCompleted.UseVisualStyleBackColor = false;
             // 
             // TaskControl
             // 
-            //this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
-            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.chkCompleted);
-            this.Controls.Add(this.btnComp);
-            this.Controls.Add(this.lblCategory);
-            this.Controls.Add(this.lblDeadline);
-            this.Controls.Add(this.lblName);
-            this.Name = "TaskControl";
-            this.Size = new System.Drawing.Size(440, 110);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-            components = new System.ComponentModel.Container();
+            Controls.Add(chkCompleted);
+            Controls.Add(btnComp);
+            Controls.Add(lblCategory);
+            Controls.Add(lblDeadline);
+            Controls.Add(lblName);
+            Name = "TaskControl";
+            Size = new Size(440, 110);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

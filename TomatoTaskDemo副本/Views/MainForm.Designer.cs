@@ -48,6 +48,11 @@
             btnPlanTasks = new Button();
             btnCalendar = new Button();
             tabPage2 = new TabPage();
+            lblMonthYear = new Label();
+            lblToday = new Label();
+            weekDaysPanel = new TableLayoutPanel();
+            taskPanel = new FlowLayoutPanel();
+            button1 = new Button();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
@@ -61,11 +66,6 @@
             editTask = new ToolStripMenuItem();
             contextMenu = new ContextMenuStrip(components);
             deleteTask = new ToolStripMenuItem();
-            lblMonthYear = new Label();
-            lblToday = new Label();
-            weekDaysPanel = new TableLayoutPanel();
-            taskPanel = new FlowLayoutPanel();
-            button1 = new Button();
             materialTabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -88,7 +88,7 @@
             materialTabControl1.Multiline = true;
             materialTabControl1.Name = "materialTabControl1";
             materialTabControl1.SelectedIndex = 0;
-            materialTabControl1.Size = new Size(1339, 721);
+            materialTabControl1.Size = new Size(1401, 830);
             materialTabControl1.SizeMode = TabSizeMode.FillToRight;
             materialTabControl1.TabIndex = 0;
             // 
@@ -109,7 +109,7 @@
             tabPage1.Location = new Point(4, 34);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1331, 683);
+            tabPage1.Size = new Size(1393, 792);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "任务总览";
             tabPage1.UseVisualStyleBackColor = true;
@@ -267,6 +267,73 @@
             tabPage2.Text = "日历视图";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblMonthYear
+            // 
+            lblMonthYear.AutoSize = true;
+            lblMonthYear.Font = new Font("微软雅黑", 14F, FontStyle.Bold);
+            lblMonthYear.Location = new Point(31, -74);
+            lblMonthYear.Margin = new Padding(6, 0, 6, 0);
+            lblMonthYear.Name = "lblMonthYear";
+            lblMonthYear.Size = new Size(0, 37);
+            lblMonthYear.TabIndex = 5;
+            // 
+            // lblToday
+            // 
+            lblToday.AutoSize = true;
+            lblToday.Font = new Font("微软雅黑", 10F);
+            lblToday.ForeColor = Color.Gray;
+            lblToday.Location = new Point(269, -64);
+            lblToday.Margin = new Padding(6, 0, 6, 0);
+            lblToday.Name = "lblToday";
+            lblToday.Size = new Size(52, 27);
+            lblToday.TabIndex = 6;
+            lblToday.Text = "今天";
+            // 
+            // weekDaysPanel
+            // 
+            weekDaysPanel.ColumnCount = 7;
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
+            weekDaysPanel.Location = new Point(31, 9);
+            weekDaysPanel.Margin = new Padding(6);
+            weekDaysPanel.Name = "weekDaysPanel";
+            weekDaysPanel.RowCount = 1;
+            weekDaysPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            weekDaysPanel.Size = new Size(1027, 83);
+            weekDaysPanel.TabIndex = 7;
+            // 
+            // taskPanel
+            // 
+            taskPanel.AutoScroll = true;
+            taskPanel.FlowDirection = FlowDirection.TopDown;
+            taskPanel.Location = new Point(31, 104);
+            taskPanel.Margin = new Padding(6);
+            taskPanel.Name = "taskPanel";
+            taskPanel.Padding = new Padding(18, 21, 18, 21);
+            taskPanel.Size = new Size(1027, 543);
+            taskPanel.TabIndex = 8;
+            taskPanel.WrapContents = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.White;
+            button1.FlatAppearance.BorderColor = Color.DodgerBlue;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("微软雅黑", 10F);
+            button1.ForeColor = Color.DodgerBlue;
+            button1.Location = new Point(31, 988);
+            button1.Margin = new Padding(6);
+            button1.Name = "button1";
+            button1.Size = new Size(183, 62);
+            button1.TabIndex = 9;
+            button1.Text = "添加任务";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // tabPage3
             // 
             tabPage3.ImageKey = "开始专注.png";
@@ -422,79 +489,12 @@
             deleteTask.Text = "删除任务";
             deleteTask.Click += DeleteTask_Click;
             // 
-            // lblMonthYear
-            // 
-            lblMonthYear.AutoSize = true;
-            lblMonthYear.Font = new Font("微软雅黑", 14F, FontStyle.Bold);
-            lblMonthYear.Location = new Point(31, -74);
-            lblMonthYear.Margin = new Padding(6, 0, 6, 0);
-            lblMonthYear.Name = "lblMonthYear";
-            lblMonthYear.Size = new Size(0, 37);
-            lblMonthYear.TabIndex = 5;
-            // 
-            // lblToday
-            // 
-            lblToday.AutoSize = true;
-            lblToday.Font = new Font("微软雅黑", 10F);
-            lblToday.ForeColor = Color.Gray;
-            lblToday.Location = new Point(269, -64);
-            lblToday.Margin = new Padding(6, 0, 6, 0);
-            lblToday.Name = "lblToday";
-            lblToday.Size = new Size(52, 27);
-            lblToday.TabIndex = 6;
-            lblToday.Text = "今天";
-            // 
-            // weekDaysPanel
-            // 
-            weekDaysPanel.ColumnCount = 7;
-            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
-            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
-            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
-            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
-            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
-            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
-            weekDaysPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28F));
-            weekDaysPanel.Location = new Point(31, 9);
-            weekDaysPanel.Margin = new Padding(6);
-            weekDaysPanel.Name = "weekDaysPanel";
-            weekDaysPanel.RowCount = 1;
-            weekDaysPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            weekDaysPanel.Size = new Size(1027, 83);
-            weekDaysPanel.TabIndex = 7;
-            // 
-            // taskPanel
-            // 
-            taskPanel.AutoScroll = true;
-            taskPanel.FlowDirection = FlowDirection.TopDown;
-            taskPanel.Location = new Point(31, 104);
-            taskPanel.Margin = new Padding(6);
-            taskPanel.Name = "taskPanel";
-            taskPanel.Padding = new Padding(18, 21, 18, 21);
-            taskPanel.Size = new Size(1027, 543);
-            taskPanel.TabIndex = 8;
-            taskPanel.WrapContents = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.White;
-            button1.FlatAppearance.BorderColor = Color.DodgerBlue;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("微软雅黑", 10F);
-            button1.ForeColor = Color.DodgerBlue;
-            button1.Location = new Point(31, 988);
-            button1.Margin = new Padding(6);
-            button1.Name = "button1";
-            button1.Size = new Size(183, 62);
-            button1.TabIndex = 9;
-            button1.Text = "添加任务";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             CausesValidation = false;
-            ClientSize = new Size(1351, 793);
+            ClientSize = new Size(1422, 921);
             Controls.Add(materialTabControl1);
             DrawerAutoShow = true;
             DrawerBackgroundWithAccent = true;

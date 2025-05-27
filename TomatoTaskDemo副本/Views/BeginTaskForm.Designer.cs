@@ -43,14 +43,14 @@
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(60, 0, 0, 0);
-            panel1.Size = new Size(600, 833);
+            panel1.Size = new Size(697, 881);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
             // countUp
             // 
             countUp.AutoSize = true;
-            countUp.Location = new Point(724, 294);
+            countUp.Location = new Point(802, 293);
             countUp.Name = "countUp";
             countUp.Size = new Size(94, 29);
             countUp.TabIndex = 2;
@@ -62,7 +62,7 @@
             // countDown
             // 
             countDown.AutoSize = true;
-            countDown.Location = new Point(1023, 294);
+            countDown.Location = new Point(1101, 293);
             countDown.Name = "countDown";
             countDown.Size = new Size(94, 29);
             countDown.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             downTime.CustomFormat = "HH:mm:ss";
             downTime.Format = DateTimePickerFormat.Time;
-            downTime.Location = new Point(967, 386);
+            downTime.Location = new Point(1045, 385);
             downTime.Name = "downTime";
             downTime.ShowUpDown = true;
             downTime.Size = new Size(300, 32);
@@ -86,7 +86,7 @@
             // 
             // btnStart
             // 
-            btnStart.Location = new Point(870, 497);
+            btnStart.Location = new Point(948, 496);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(204, 74);
             btnStart.TabIndex = 5;
@@ -96,7 +96,7 @@
             // 
             // panel2
             // 
-            panel2.Location = new Point(714, 39);
+            panel2.Location = new Point(792, 38);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(0, 0, 20, 0);
             panel2.Size = new Size(600, 188);
@@ -106,7 +106,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1400, 833);
+            ClientSize = new Size(1462, 881);
             Controls.Add(panel2);
             Controls.Add(btnStart);
             Controls.Add(downTime);
