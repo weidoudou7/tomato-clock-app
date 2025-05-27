@@ -346,6 +346,10 @@ namespace TomatoTaskApp.Views
             {
                 InitializeBeginTaskTab();
             }
+            if(materialTabControl1.SelectedTab == tabPage6)
+            {
+                InitializeLockScreenTab();
+            }
         }
 
         // 初始化日历 Tab 页
@@ -383,6 +387,25 @@ namespace TomatoTaskApp.Views
             // 将窗体添加到 TabPage
             tabPage3.Controls.Add(_beginTaskForm);
             _beginTaskForm.Show(); // 显示窗体
+        }
+
+        private void InitializeLockScreenTab()
+        {
+            // 清理旧控件
+            tabPage6.Controls.Clear();
+
+            // 创建并嵌入 LockScreenForm
+            var lockScreenForm = new LockScreenForm(new LockScreenController())
+            {
+                TopLevel = false,        // 关键：非顶级窗口
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill    // 填充整个 TabPage
+            };
+
+            // 将窗体添加到 TabPage
+            tabPage6.Controls.Add(lockScreenForm);
+            lockScreenForm.Show();
+
         }
 
     }

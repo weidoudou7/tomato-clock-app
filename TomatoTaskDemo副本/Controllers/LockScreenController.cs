@@ -1,11 +1,39 @@
-﻿namespace TomatoClockApp.Controllers
+﻿using TomatoClockApp.Services;
+
+namespace TomatoClockApp.Controllers
 {
     public class LockScreenController
     {
-        // 锁机系统的逻辑可以在这里实现，例如验证密码等
-        public bool Unlock(string password)
+        private LockScreenService lockScreenService;
+
+        public LockScreenController()
         {
-            return password == "123456"; // 假设密码是123456
+            lockScreenService = new LockScreenService();
+        }
+
+        public void Lock()
+        {
+            lockScreenService.StartLock();
+        }
+
+        public void Unlock()
+        {
+            lockScreenService.StopLock();
+        }
+
+        public AppLockConfig GetAppLockConfig()
+        {
+            return lockScreenService.GetAppLockConfig();
+        }
+
+        public void UpdateAppLockConfig(AppLockConfig config)
+        {
+            lockScreenService.UpdateConfig(config);
+        }
+
+        public bool IsLocked()
+        {
+            return lockScreenService.IsLocked();
         }
     }
 }
