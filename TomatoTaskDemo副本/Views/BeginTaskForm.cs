@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TomatoClockApp.Controllers;
 using TomatoClockApp.Services;
+using TomatoTaskDemo.CustomerControls;
 using TomatoTaskDemo.Views;
-using WindowsFormsControlLibrary;
+
 
 namespace TomatoTaskDemo.Services
 {

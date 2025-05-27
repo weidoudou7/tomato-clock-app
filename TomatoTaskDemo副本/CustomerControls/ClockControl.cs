@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsControlLibrary
+namespace TomatoTaskDemo.CustomerControls
 {
-    public partial class ClockControl : UserControl
+    public partial class ClockControl : Control
     {
         // 常量定义
         private const int SIN_WAVE_COUNT = 12;//波形数量

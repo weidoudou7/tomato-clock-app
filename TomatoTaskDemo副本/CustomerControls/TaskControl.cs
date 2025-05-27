@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsControlLibrary
+namespace TomatoTaskDemo.CustomerControls
 {
     public partial class TaskControl : UserControl, IComparable
     {

@@ -24,8 +24,5 @@
 		</PackageReference>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\WindowsFormsControlLibrary\WindowsFormsControlLibrary.csproj" />
-	</ItemGroup>
 
 </Project>
