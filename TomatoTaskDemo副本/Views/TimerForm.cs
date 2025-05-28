@@ -19,20 +19,22 @@ namespace TomatoTaskDemo.Views
         ClockControl clockContorl;
         private TimerController timerController;
 
-
+        // 时间标签按压效果
+        private bool lblTimePressed;
         public TimerForm(TimerController controller)
         {
             timerController = controller;
             timer = new System.Timers.Timer(200);
             timer.Elapsed += Timer_Elapsed;
             InitializeComponent();
+
             Control.CheckForIllegalCrossThreadCalls = false;
 
             clockContorl = new ClockControl(panel1.Width, panel1.Height);
 
             panel1.Controls.Add(clockContorl);
 
-            this.FormClosing += (s,e) =>
+            this.FormClosing += (s, e) =>
             {
                 timerController.Stop();
             };
@@ -48,6 +50,9 @@ namespace TomatoTaskDemo.Views
 
             DateTime baseTime = DateTime.Today.Add(timerController.CurrentTime);
             clockContorl.setTime(baseTime);
+            // 添加呼吸灯效果
+            var alpha = (Math.Sin(DateTime.Now.Second * 0.1) + 1) * 120;
+            lblTime.ForeColor = Color.FromArgb((int)alpha, 230, 80, 80);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -76,5 +81,42 @@ namespace TomatoTaskDemo.Views
             }
         }
 
+        private void lblTime_MouseDown(object sender, MouseEventArgs e)
+        {
+            lblTimePressed = true;
+            lblTime.Font = new Font(lblTime.Font, FontStyle.Bold);
+        }
+
+        private void lblTime_MouseUp(object sender, MouseEventArgs e)
+        {
+            lblTimePressed = false;
+            lblTime.Font = new Font(lblTime.Font, FontStyle.Regular);
+        }
+
+        // 使用阴影效果
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            ControlPaint.DrawBorder(e.Graphics, splitContainer1.Panel2.ClientRectangle,
+                Color.FromArgb(30, 30, 30), ButtonBorderStyle.Outset);
+        }
+        // 添加快捷键支持
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Space)
+            {
+                if (btnStart.Enabled) btnStart.PerformClick();
+                else btnStop.PerformClick();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            timerController.Reset(0,TomatoClockApp.Services.TimerMode.CountUp);
+            lblTime.Text  = "00:00:00";
+            lblTotalTime.Text = "00:00:00";
+        }
     }
 }
