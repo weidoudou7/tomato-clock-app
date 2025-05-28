@@ -38,12 +38,10 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
-            btnFindTask = new Button();
             btnAddTask = new Button();
             btnLockScreen = new Button();
             btnStartTimer = new Button();
             btnCommunity = new Button();
-            btnStopTimer = new Button();
             btnStatistics = new Button();
             btnCalendar = new Button();
             tabPage2 = new TabPage();
@@ -95,12 +93,10 @@
             // 
             tabPage1.Controls.Add(dateTimePicker1);
             tabPage1.Controls.Add(lvTasks);
-            tabPage1.Controls.Add(btnFindTask);
             tabPage1.Controls.Add(btnAddTask);
             tabPage1.Controls.Add(btnLockScreen);
             tabPage1.Controls.Add(btnStartTimer);
             tabPage1.Controls.Add(btnCommunity);
-            tabPage1.Controls.Add(btnStopTimer);
             tabPage1.Controls.Add(btnStatistics);
             tabPage1.Controls.Add(btnCalendar);
             tabPage1.ImageKey = "任务总览.png";
@@ -155,19 +151,9 @@
             columnHeader4.Text = "状态";
             columnHeader4.Width = 100;
             // 
-            // btnFindTask
-            // 
-            btnFindTask.Location = new Point(298, 582);
-            btnFindTask.Margin = new Padding(6);
-            btnFindTask.Name = "btnFindTask";
-            btnFindTask.Size = new Size(144, 60);
-            btnFindTask.TabIndex = 20;
-            btnFindTask.Text = "查找任务";
-            btnFindTask.UseVisualStyleBackColor = true;
-            // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(142, 507);
+            btnAddTask.Location = new Point(140, 510);
             btnAddTask.Margin = new Padding(6);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(144, 60);
@@ -178,7 +164,7 @@
             // 
             // btnLockScreen
             // 
-            btnLockScreen.Location = new Point(142, 582);
+            btnLockScreen.Location = new Point(855, 510);
             btnLockScreen.Margin = new Padding(6);
             btnLockScreen.Name = "btnLockScreen";
             btnLockScreen.Size = new Size(144, 60);
@@ -189,7 +175,7 @@
             // 
             // btnStartTimer
             // 
-            btnStartTimer.Location = new Point(298, 510);
+            btnStartTimer.Location = new Point(496, 510);
             btnStartTimer.Margin = new Padding(6);
             btnStartTimer.Name = "btnStartTimer";
             btnStartTimer.Size = new Size(144, 60);
@@ -200,7 +186,7 @@
             // 
             // btnCommunity
             // 
-            btnCommunity.Location = new Point(610, 507);
+            btnCommunity.Location = new Point(1037, 510);
             btnCommunity.Margin = new Padding(6);
             btnCommunity.Name = "btnCommunity";
             btnCommunity.Size = new Size(144, 60);
@@ -209,19 +195,9 @@
             btnCommunity.UseVisualStyleBackColor = true;
             btnCommunity.Click += btnCommunity_Click;
             // 
-            // btnStopTimer
-            // 
-            btnStopTimer.Location = new Point(454, 507);
-            btnStopTimer.Margin = new Padding(6);
-            btnStopTimer.Name = "btnStopTimer";
-            btnStopTimer.Size = new Size(144, 60);
-            btnStopTimer.TabIndex = 14;
-            btnStopTimer.Text = "停止计时";
-            btnStopTimer.UseVisualStyleBackColor = true;
-            // 
             // btnStatistics
             // 
-            btnStatistics.Location = new Point(922, 507);
+            btnStatistics.Location = new Point(675, 510);
             btnStatistics.Margin = new Padding(6);
             btnStatistics.Name = "btnStatistics";
             btnStatistics.Size = new Size(144, 60);
@@ -232,7 +208,7 @@
             // 
             // btnCalendar
             // 
-            btnCalendar.Location = new Point(766, 507);
+            btnCalendar.Location = new Point(319, 510);
             btnCalendar.Margin = new Padding(6);
             btnCalendar.Name = "btnCalendar";
             btnCalendar.Size = new Size(144, 60);
@@ -519,12 +495,10 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
-        private Button btnFindTask;
         private Button btnAddTask;
         private Button btnLockScreen;
         private Button btnStartTimer;
         private Button btnCommunity;
-        private Button btnStopTimer;
         private Button btnStatistics;
         private Button btnCalendar;
         private ToolStripMenuItem editTask;
