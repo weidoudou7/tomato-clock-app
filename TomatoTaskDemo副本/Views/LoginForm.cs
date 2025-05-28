@@ -36,6 +36,9 @@ namespace todolist登录界面
             // 初始化提示文本
             SetPlaceholder(UserNameBox, usernamePlaceholder);
             SetPlaceholder(PasswordBox, passwordPlaceholder);
+            // 初始设置密码隐藏
+            PasswordBox.PasswordChar = '*';  // 设置密码字符为*
+            checkBoxPassword.Checked = false; // 确保复选框初始状态为未选中
         }
         // 在 LoginForm 中添加测试方法
        

@@ -63,6 +63,7 @@
             PasswordBox.Name = "PasswordBox";
             PasswordBox.Size = new Size(304, 46);
             PasswordBox.TabIndex = 2;
+            PasswordBox.PasswordChar = '*';
             PasswordBox.Enter += PasswordBox_Enter;
             PasswordBox.Leave += PasswordBox_Leave;
             // 
