@@ -164,12 +164,12 @@
             // 
             // btnLockScreen
             // 
-            btnLockScreen.Location = new Point(855, 510);
+            btnLockScreen.Location = new Point(1037, 510);
             btnLockScreen.Margin = new Padding(6);
             btnLockScreen.Name = "btnLockScreen";
             btnLockScreen.Size = new Size(144, 60);
             btnLockScreen.TabIndex = 19;
-            btnLockScreen.Text = "锁屏";
+            btnLockScreen.Text = "锁屏设置";
             btnLockScreen.UseVisualStyleBackColor = true;
             btnLockScreen.Click += btnLockScreen_Click;
             // 
@@ -180,18 +180,18 @@
             btnStartTimer.Name = "btnStartTimer";
             btnStartTimer.Size = new Size(144, 60);
             btnStartTimer.TabIndex = 13;
-            btnStartTimer.Text = "开始计时";
+            btnStartTimer.Text = "开始专注";
             btnStartTimer.UseVisualStyleBackColor = true;
             btnStartTimer.Click += btnStartTimer_Click;
             // 
             // btnCommunity
             // 
-            btnCommunity.Location = new Point(1037, 510);
+            btnCommunity.Location = new Point(860, 510);
             btnCommunity.Margin = new Padding(6);
             btnCommunity.Name = "btnCommunity";
             btnCommunity.Size = new Size(144, 60);
             btnCommunity.TabIndex = 18;
-            btnCommunity.Text = "社区";
+            btnCommunity.Text = "社区一览";
             btnCommunity.UseVisualStyleBackColor = true;
             btnCommunity.Click += btnCommunity_Click;
             // 
@@ -202,7 +202,7 @@
             btnStatistics.Name = "btnStatistics";
             btnStatistics.Size = new Size(144, 60);
             btnStatistics.TabIndex = 17;
-            btnStatistics.Text = "统计";
+            btnStatistics.Text = "任务统计";
             btnStatistics.UseVisualStyleBackColor = true;
             btnStatistics.Click += btnStatistics_Click;
             // 
@@ -213,7 +213,7 @@
             btnCalendar.Name = "btnCalendar";
             btnCalendar.Size = new Size(144, 60);
             btnCalendar.TabIndex = 16;
-            btnCalendar.Text = "日历";
+            btnCalendar.Text = "日历视图";
             btnCalendar.UseVisualStyleBackColor = true;
             btnCalendar.Click += btnCalendar_Click;
             // 

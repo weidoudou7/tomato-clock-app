@@ -20,57 +20,96 @@
 
         private void InitializeComponent()
         {
-            this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.cmbSort = new System.Windows.Forms.ComboBox();
-            this.btnUpload = new MaterialSkin.Controls.MaterialButton();
-            this.btnMyTemplates = new MaterialSkin.Controls.MaterialButton();
-            this.btnAllTemplates = new MaterialSkin.Controls.MaterialButton();
-            this.SuspendLayout();
+            flowPanel = new FlowLayoutPanel();
+            cmbSort = new ComboBox();
+            btnUpload = new MaterialSkin.Controls.MaterialButton();
+            btnMyTemplates = new MaterialSkin.Controls.MaterialButton();
+            btnAllTemplates = new MaterialSkin.Controls.MaterialButton();
+            SuspendLayout();
             // 
             // flowPanel
             // 
-            this.flowPanel.Location = new System.Drawing.Point(20, 140);
-            this.flowPanel.Size = new System.Drawing.Size(940, 500);
-            this.flowPanel.AutoScroll = true;
-            this.flowPanel.WrapContents = true;
-            this.flowPanel.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            flowPanel.AutoScroll = true;
+            flowPanel.Location = new Point(20, 140);
+            flowPanel.Name = "flowPanel";
+            flowPanel.Size = new Size(940, 500);
+            flowPanel.TabIndex = 4;
             // 
             // cmbSort
             // 
-            this.cmbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSort.Location = new System.Drawing.Point(20, 100);
-            this.cmbSort.Width = 150;
-            this.cmbSort.Items.AddRange(new object[] { "最新", "最多下载", "最多点赞" });
-            this.cmbSort.SelectedIndex = 0;
+            cmbSort.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbSort.Items.AddRange(new object[] { "最新", "最多下载", "最多点赞" });
+            cmbSort.Location = new Point(20, 100);
+            cmbSort.Name = "cmbSort";
+            cmbSort.Size = new Size(214, 33);
+            cmbSort.TabIndex = 0;
             // 
             // btnUpload
             // 
-            this.btnUpload.Text = "上传模板";
-            this.btnUpload.Location = new System.Drawing.Point(200, 95);
-            this.btnUpload.Width = 100;
+            btnUpload.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnUpload.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnUpload.Depth = 0;
+            btnUpload.HighEmphasis = true;
+            btnUpload.Icon = null;
+            btnUpload.Location = new Point(349, 97);
+            btnUpload.Margin = new Padding(4, 6, 4, 6);
+            btnUpload.MouseState = MaterialSkin.MouseState.HOVER;
+            btnUpload.Name = "btnUpload";
+            btnUpload.NoAccentTextColor = Color.Empty;
+            btnUpload.Size = new Size(85, 36);
+            btnUpload.TabIndex = 1;
+            btnUpload.Text = "上传模板";
+            btnUpload.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnUpload.UseAccentColor = false;
             // 
             // btnMyTemplates
             // 
-            this.btnMyTemplates.Text = "我的模板";
-            this.btnMyTemplates.Location = new System.Drawing.Point(320, 95);
-            this.btnMyTemplates.Width = 100;
+            btnMyTemplates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnMyTemplates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnMyTemplates.Depth = 0;
+            btnMyTemplates.HighEmphasis = true;
+            btnMyTemplates.Icon = null;
+            btnMyTemplates.Location = new Point(506, 97);
+            btnMyTemplates.Margin = new Padding(4, 6, 4, 6);
+            btnMyTemplates.MouseState = MaterialSkin.MouseState.HOVER;
+            btnMyTemplates.Name = "btnMyTemplates";
+            btnMyTemplates.NoAccentTextColor = Color.Empty;
+            btnMyTemplates.Size = new Size(85, 36);
+            btnMyTemplates.TabIndex = 2;
+            btnMyTemplates.Text = "我的模板";
+            btnMyTemplates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnMyTemplates.UseAccentColor = false;
             // 
             // btnAllTemplates
             // 
-            this.btnAllTemplates.Text = "全部模板";
-            this.btnAllTemplates.Location = new System.Drawing.Point(440, 95);
-            this.btnAllTemplates.Width = 100;
+            btnAllTemplates.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAllTemplates.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAllTemplates.Depth = 0;
+            btnAllTemplates.HighEmphasis = true;
+            btnAllTemplates.Icon = null;
+            btnAllTemplates.Location = new Point(657, 97);
+            btnAllTemplates.Margin = new Padding(4, 6, 4, 6);
+            btnAllTemplates.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAllTemplates.Name = "btnAllTemplates";
+            btnAllTemplates.NoAccentTextColor = Color.Empty;
+            btnAllTemplates.Size = new Size(85, 36);
+            btnAllTemplates.TabIndex = 3;
+            btnAllTemplates.Text = "全部模板";
+            btnAllTemplates.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAllTemplates.UseAccentColor = false;
             // 
             // CommunityForm
             // 
-            this.Text = "社区任务模板";
-            this.ClientSize = new System.Drawing.Size(1000, 700);
-            this.Controls.Add(this.cmbSort);
-            this.Controls.Add(this.btnUpload);
-            this.Controls.Add(this.btnMyTemplates);
-            this.Controls.Add(this.btnAllTemplates);
-            this.Controls.Add(this.flowPanel);
-            this.ResumeLayout(false);
+            ClientSize = new Size(1000, 700);
+            Controls.Add(cmbSort);
+            Controls.Add(btnUpload);
+            Controls.Add(btnMyTemplates);
+            Controls.Add(btnAllTemplates);
+            Controls.Add(flowPanel);
+            Name = "CommunityForm";
+            Text = "社区任务模板";
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }
