@@ -99,10 +99,18 @@ namespace TomatoTaskApp.Views
             LoadTasks(plannedTasks);
         }
 
+        //private void btnCalendar_Click(object sender, EventArgs e)
+        //{
+        //    var calendarForm = new CalendarForm(taskController);
+        //    calendarForm.ShowDialog();
+        //}
         private void btnCalendar_Click(object sender, EventArgs e)
         {
-            var calendarForm = new CalendarForm(taskController);
-            calendarForm.ShowDialog();
+            // 切换到tabPage2
+            materialTabControl1.SelectedTab = tabPage2;
+
+            // 确保tabPage2已初始化
+            InitializeCalendarTab();
         }
 
         private void btnStatistics_Click(object sender, EventArgs e)
@@ -391,6 +399,8 @@ namespace TomatoTaskApp.Views
                 TopLevel = false,       // 关键：设置为非顶级窗口
                 FormBorderStyle = FormBorderStyle.None,
                 Dock = DockStyle.Fill   // 填充整个 TabPage
+                //Size = new Size(900, 480),          // 固定大小 800x600
+                //Location = new Point(20, 10)
             };
 
             // 将窗体添加到 TabPage
