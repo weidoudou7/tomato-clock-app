@@ -255,7 +255,7 @@ namespace TomatoClockApp.Views
             {
                 Text = isDarkMode ? DarkThemeIcon : LightThemeIcon,
                 Size = new Size(40, 30),
-                Location = new Point(10, 5),
+                Location = new Point(20, 5),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = isDarkMode ? DarkControlBackColor : LightControlBackColor,
                 ForeColor = isDarkMode ? DarkTextColor : LightTextColor,
@@ -272,7 +272,7 @@ namespace TomatoClockApp.Views
             {
                 Text = "◀ 上周",
                 Size = new Size(80, 30),
-                Location = new Point(60, 5), // 向右移动50px
+                Location = new Point(70, 5), // 向右移动50px
                 FlatStyle = FlatStyle.Flat,
                 BackColor = isDarkMode ? DarkControlBackColor : LightControlBackColor,
                 ForeColor = isDarkMode ? DarkTextColor : LightTextColor,
@@ -290,7 +290,7 @@ namespace TomatoClockApp.Views
             {
                 Text = GetCurrentWeekText(),
                 Size = new Size(200, 30),
-                Location = new Point(140, 5), // 向右移动60px
+                Location = new Point(150, 5), // 向右移动60px
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Microsoft YaHei", 10, FontStyle.Bold),
                 ForeColor = isDarkMode ? DarkTextColor : Color.DimGray,
@@ -303,7 +303,7 @@ namespace TomatoClockApp.Views
             {
                 Text = "下周 ▶",
                 Size = new Size(80, 30),
-                Location = new Point(340, 5),
+                Location = new Point(350, 5),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = isDarkMode ? DarkControlBackColor : LightControlBackColor,
                 ForeColor = isDarkMode ? DarkTextColor : LightTextColor,
@@ -317,7 +317,7 @@ namespace TomatoClockApp.Views
             buttonGroup.Controls.Add(btnNextWeek);
 
             // 5. 分隔线1
-            buttonGroup.Controls.Add(CreateSeparator(430, 5));
+            buttonGroup.Controls.Add(CreateSeparator(440, 5));
 
 
             // 6.数据源下拉框
@@ -325,7 +325,7 @@ namespace TomatoClockApp.Views
             {
                 DropDownStyle = ComboBoxStyle.DropDownList,
                 Size = new Size(100, 30),
-                Location = new Point(450, 5),
+                Location = new Point(460, 5),
                 Font = new Font("Microsoft YaHei", 9),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.White,
@@ -337,14 +337,14 @@ namespace TomatoClockApp.Views
             buttonGroup.Controls.Add(cmbDataSource);
 
             // 7. 分隔线2
-            buttonGroup.Controls.Add(CreateSeparator(560, 5));
+            buttonGroup.Controls.Add(CreateSeparator(570, 5));
 
             // 8. 切换图表按钮
             var btnToggleChart = new Button
             {
                 Text = isColumnChart ? "切换为折线图" : "切换为柱状图",
-                Size = new Size(120, 30),
-                Location = new Point(580, 5),
+                Size = new Size(110, 30),
+                Location = new Point(590, 5),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = isDarkMode ? DarkControlBackColor : LightControlBackColor,
                 ForeColor = isDarkMode ? DarkTextColor : LightTextColor,
