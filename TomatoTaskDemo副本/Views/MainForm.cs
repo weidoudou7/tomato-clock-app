@@ -124,19 +124,11 @@ namespace TomatoTaskApp.Views
 
         private void btnCommunity_Click(object sender, EventArgs e)
         {
-            // 1. 创建 TaskTemplateController
-            var templateRepository = new TaskTemplateRepository(_context);
-            var taskRepository = new TaskRepository(_context);
-            var templateController = new TaskTemplateController(templateRepository, taskRepository);
+            // 切换到tabPage5
+            materialTabControl1.SelectedTab = tabPage5;
 
-            // 2. 获取当前用户ID
-            int currentUserId = CurrentUser.UserId;
-
-            // 3. 创建并显示 CommunityForm
-            var communityForm = new CommunityForm(templateController, currentUserId);
-            communityForm.ShowDialog();
-            // 当CommunityForm关闭时刷新任务列表
-            LoadTasks();
+            // 确保tabPage5已初始化
+            LoadTemplates();
         }
 
         private void btnLockScreen_Click(object sender, EventArgs e)
