@@ -130,7 +130,7 @@
             lvTasks.Location = new Point(140, 32);
             lvTasks.Margin = new Padding(6);
             lvTasks.Name = "lvTasks";
-            lvTasks.Size = new Size(1041, 489);
+            lvTasks.Size = new Size(1041, 466);
             lvTasks.TabIndex = 11;
             lvTasks.UseCompatibleStateImageBehavior = false;
             lvTasks.View = View.Details;
@@ -159,7 +159,7 @@
             // 
             // btnFindTask
             // 
-            btnFindTask.Location = new Point(296, 608);
+            btnFindTask.Location = new Point(298, 582);
             btnFindTask.Margin = new Padding(6);
             btnFindTask.Name = "btnFindTask";
             btnFindTask.Size = new Size(144, 60);
@@ -169,7 +169,7 @@
             // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(140, 533);
+            btnAddTask.Location = new Point(142, 507);
             btnAddTask.Margin = new Padding(6);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(144, 60);
@@ -180,17 +180,18 @@
             // 
             // btnLockScreen
             // 
-            btnLockScreen.Location = new Point(140, 608);
+            btnLockScreen.Location = new Point(142, 582);
             btnLockScreen.Margin = new Padding(6);
             btnLockScreen.Name = "btnLockScreen";
             btnLockScreen.Size = new Size(144, 60);
             btnLockScreen.TabIndex = 19;
             btnLockScreen.Text = "锁屏";
             btnLockScreen.UseVisualStyleBackColor = true;
+            btnLockScreen.Click += btnLockScreen_Click;
             // 
             // btnStartTimer
             // 
-            btnStartTimer.Location = new Point(296, 536);
+            btnStartTimer.Location = new Point(298, 510);
             btnStartTimer.Margin = new Padding(6);
             btnStartTimer.Name = "btnStartTimer";
             btnStartTimer.Size = new Size(144, 60);
@@ -201,7 +202,7 @@
             // 
             // btnCommunity
             // 
-            btnCommunity.Location = new Point(452, 608);
+            btnCommunity.Location = new Point(454, 582);
             btnCommunity.Margin = new Padding(6);
             btnCommunity.Name = "btnCommunity";
             btnCommunity.Size = new Size(144, 60);
@@ -212,7 +213,7 @@
             // 
             // btnStopTimer
             // 
-            btnStopTimer.Location = new Point(452, 533);
+            btnStopTimer.Location = new Point(454, 507);
             btnStopTimer.Margin = new Padding(6);
             btnStopTimer.Name = "btnStopTimer";
             btnStopTimer.Size = new Size(144, 60);
@@ -222,7 +223,7 @@
             // 
             // btnStatistics
             // 
-            btnStatistics.Location = new Point(920, 533);
+            btnStatistics.Location = new Point(922, 507);
             btnStatistics.Margin = new Padding(6);
             btnStatistics.Name = "btnStatistics";
             btnStatistics.Size = new Size(144, 60);
@@ -232,7 +233,7 @@
             // 
             // btnPlanTasks
             // 
-            btnPlanTasks.Location = new Point(608, 533);
+            btnPlanTasks.Location = new Point(610, 507);
             btnPlanTasks.Margin = new Padding(6);
             btnPlanTasks.Name = "btnPlanTasks";
             btnPlanTasks.Size = new Size(144, 60);
@@ -242,7 +243,7 @@
             // 
             // btnCalendar
             // 
-            btnCalendar.Location = new Point(764, 533);
+            btnCalendar.Location = new Point(766, 507);
             btnCalendar.Margin = new Padding(6);
             btnCalendar.Name = "btnCalendar";
             btnCalendar.Size = new Size(144, 60);
@@ -262,7 +263,7 @@
             tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1331, 683);
+            tabPage2.Size = new Size(1393, 792);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "日历视图";
             tabPage2.UseVisualStyleBackColor = true;
@@ -340,7 +341,7 @@
             tabPage3.Location = new Point(4, 34);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1331, 683);
+            tabPage3.Size = new Size(1393, 792);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "开始专注";
             tabPage3.UseVisualStyleBackColor = true;
@@ -351,7 +352,7 @@
             tabPage4.Location = new Point(4, 34);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1331, 683);
+            tabPage4.Size = new Size(1393, 792);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "任务规划";
             tabPage4.UseVisualStyleBackColor = true;
@@ -367,7 +368,7 @@
             tabPage5.Location = new Point(4, 34);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(1331, 683);
+            tabPage5.Size = new Size(1393, 792);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "社区一览";
             tabPage5.UseVisualStyleBackColor = true;
@@ -451,7 +452,7 @@
             tabPage6.Location = new Point(4, 34);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(1331, 683);
+            tabPage6.Size = new Size(1393, 792);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "个人主页";
             tabPage6.UseVisualStyleBackColor = true;

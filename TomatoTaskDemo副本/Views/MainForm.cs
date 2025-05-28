@@ -29,6 +29,7 @@ namespace TomatoTaskApp.Views
         private bool showMyTemplates = false;
         private CalendarForm _calendarForm;
         private BeginTaskForm _beginTaskForm;
+        private LockScreenForm _lockScreenForm;
 
         public MainForm()
         {
@@ -75,9 +76,14 @@ namespace TomatoTaskApp.Views
 
         private void btnStartTimer_Click(object sender, EventArgs e)
         {
-            //timerController.Start();
-            BeginTaskForm beginTask = new BeginTaskForm(taskController, timerController);
-            beginTask.ShowDialog();
+            ////timerController.Start();
+            //BeginTaskForm beginTask = new BeginTaskForm(taskController, timerController);
+            //beginTask.ShowDialog();
+            // 切换到tabPage3
+            materialTabControl1.SelectedTab = tabPage3;
+
+            // 确保tabPage3已初始化
+            InitializeBeginTaskTab();
         }
 
         private void btnStopTimer_Click(object sender, EventArgs e)
@@ -123,9 +129,17 @@ namespace TomatoTaskApp.Views
 
         private void btnLockScreen_Click(object sender, EventArgs e)
         {
-            var lockScreenController = new LockScreenController();
-            var lockScreenForm = new LockScreenForm(lockScreenController);
-            lockScreenForm.ShowDialog();
+            //var lockScreenController = new LockScreenController();
+            //var lockScreenForm = new LockScreenForm(lockScreenController);
+            //lockScreenForm.ShowDialog();
+            // 切换到tabPage6
+            materialTabControl1.SelectedTab = tabPage6;
+
+            // 确保tabPage6已初始化
+            if (_lockScreenForm == null)
+            {
+                InitializeLockScreenTab();
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -355,8 +369,11 @@ namespace TomatoTaskApp.Views
         // 初始化日历 Tab 页
         private void InitializeCalendarTab()
         {
-            // 清理旧控件
-            tabPage2.Controls.Clear();
+            if (_calendarForm != null)
+            {
+                _calendarForm.Dispose();
+                tabPage2.Controls.Clear();
+            }
 
             // 创建并嵌入 CalendarForm
             _calendarForm = new CalendarForm(taskController)
@@ -373,39 +390,46 @@ namespace TomatoTaskApp.Views
         // 初始化任务开始 Tab 页
         private void InitializeBeginTaskTab()
         {
-            // 清理旧控件
-            tabPage3.Controls.Clear();
+            if (_beginTaskForm != null)
+            {
+                _beginTaskForm.Dispose();
+                tabPage3.Controls.Clear();
+            }
 
             // 创建并嵌入 BeginTaskForm
             _beginTaskForm = new BeginTaskForm(taskController, timerController)
             {
-                TopLevel = false,        // 关键：非顶级窗口
+                TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill    // 填充整个 TabPage
+                Dock = DockStyle.Fill
             };
 
             // 将窗体添加到 TabPage
             tabPage3.Controls.Add(_beginTaskForm);
-            _beginTaskForm.Show(); // 显示窗体
+            _beginTaskForm.Show();
+
         }
 
         private void InitializeLockScreenTab()
         {
-            // 清理旧控件
-            tabPage6.Controls.Clear();
+            if (_lockScreenForm != null)
+            {
+                _lockScreenForm.Dispose();
+                tabPage6.Controls.Clear();
+            }
 
             // 创建并嵌入 LockScreenForm
             var lockScreenForm = new LockScreenForm(new LockScreenController())
             {
-                TopLevel = false,        // 关键：非顶级窗口
+                TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill    // 填充整个 TabPage
+                Size = new Size(800, 480),          // 固定大小 800x600
+                Location = new Point(20, 10)           // 左上显示
             };
 
             // 将窗体添加到 TabPage
             tabPage6.Controls.Add(lockScreenForm);
             lockScreenForm.Show();
-
         }
 
     }
