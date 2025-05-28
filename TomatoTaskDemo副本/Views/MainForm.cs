@@ -30,6 +30,7 @@ namespace TomatoTaskApp.Views
         private CalendarForm _calendarForm;
         private BeginTaskForm _beginTaskForm;
         private LockScreenForm _lockScreenForm;
+        private StatisticsForm _statisticsForm;
 
         public MainForm()
         {
@@ -44,12 +45,12 @@ namespace TomatoTaskApp.Views
             {
                 context.Database.EnsureCreated();
             }
-
             taskController = new TaskController(new TaskRepository(new AppDbContext()));
             timerController = new TimerController();
             nlpController = new NLPController();
             aiController = new AIController();
             communityController = new CommunityController();
+            statisticsController = new StatisticsController(new TaskRepository(new AppDbContext()));
 
             // 初始化模板控制器
             var templateRepository = new TaskTemplateRepository(_context);
@@ -106,8 +107,11 @@ namespace TomatoTaskApp.Views
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            var statisticsForm = new StatisticsForm(statisticsController);
-            statisticsForm.ShowDialog();
+            // 切换到tabPage4
+            materialTabControl1.SelectedTab = tabPage4;
+
+            // 确保tabPage4已初始化
+            InitializeStatisticsTab();
         }
 
         private void btnCommunity_Click(object sender, EventArgs e)
@@ -360,11 +364,17 @@ namespace TomatoTaskApp.Views
             {
                 InitializeBeginTaskTab();
             }
-            if(materialTabControl1.SelectedTab == tabPage6)
+            if (materialTabControl1.SelectedTab == tabPage4)
+            {
+                InitializeStatisticsTab();
+            }
+            if (materialTabControl1.SelectedTab == tabPage6)
             {
                 InitializeLockScreenTab();
             }
         }
+
+
 
         // 初始化日历 Tab 页
         private void InitializeCalendarTab()
@@ -401,7 +411,8 @@ namespace TomatoTaskApp.Views
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill
+                Size = new Size(900, 480),          // 固定大小 800x600
+                Location = new Point(20, 10)
             };
 
             // 将窗体添加到 TabPage
@@ -423,13 +434,35 @@ namespace TomatoTaskApp.Views
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
-                Size = new Size(800, 480),          // 固定大小 800x600
+                Size = new Size(900, 480),          // 固定大小 800x600
                 Location = new Point(20, 10)           // 左上显示
             };
 
             // 将窗体添加到 TabPage
             tabPage6.Controls.Add(lockScreenForm);
             lockScreenForm.Show();
+        }
+
+        private void InitializeStatisticsTab()
+        {
+            if (_statisticsForm != null)
+            {
+                _statisticsForm.Dispose();
+                tabPage4.Controls.Clear();
+            }
+
+
+            _statisticsForm = new StatisticsForm(statisticsController)
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None,
+                Size = new Size(900, 480),          // 固定大小 800x600
+                Location = new Point(20, 10)
+            };
+
+            // 将窗体添加到 TabPage
+            tabPage4.Controls.Add(_statisticsForm);
+            _statisticsForm.Show();
         }
 
     }

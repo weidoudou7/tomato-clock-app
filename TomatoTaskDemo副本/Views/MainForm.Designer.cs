@@ -45,7 +45,6 @@
             btnCommunity = new Button();
             btnStopTimer = new Button();
             btnStatistics = new Button();
-            btnPlanTasks = new Button();
             btnCalendar = new Button();
             tabPage2 = new TabPage();
             lblMonthYear = new Label();
@@ -103,7 +102,6 @@
             tabPage1.Controls.Add(btnCommunity);
             tabPage1.Controls.Add(btnStopTimer);
             tabPage1.Controls.Add(btnStatistics);
-            tabPage1.Controls.Add(btnPlanTasks);
             tabPage1.Controls.Add(btnCalendar);
             tabPage1.ImageKey = "任务总览.png";
             tabPage1.Location = new Point(4, 34);
@@ -202,7 +200,7 @@
             // 
             // btnCommunity
             // 
-            btnCommunity.Location = new Point(454, 582);
+            btnCommunity.Location = new Point(610, 507);
             btnCommunity.Margin = new Padding(6);
             btnCommunity.Name = "btnCommunity";
             btnCommunity.Size = new Size(144, 60);
@@ -230,16 +228,7 @@
             btnStatistics.TabIndex = 17;
             btnStatistics.Text = "统计";
             btnStatistics.UseVisualStyleBackColor = true;
-            // 
-            // btnPlanTasks
-            // 
-            btnPlanTasks.Location = new Point(610, 507);
-            btnPlanTasks.Margin = new Padding(6);
-            btnPlanTasks.Name = "btnPlanTasks";
-            btnPlanTasks.Size = new Size(144, 60);
-            btnPlanTasks.TabIndex = 15;
-            btnPlanTasks.Text = "规划任务";
-            btnPlanTasks.UseVisualStyleBackColor = true;
+            btnStatistics.Click += btnStatistics_Click;
             // 
             // btnCalendar
             // 
@@ -348,13 +337,13 @@
             // 
             // tabPage4
             // 
-            tabPage4.ImageKey = "任务规划.png";
+            tabPage4.ImageKey = "任务统计.png";
             tabPage4.Location = new Point(4, 34);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
             tabPage4.Size = new Size(1393, 792);
             tabPage4.TabIndex = 3;
-            tabPage4.Text = "任务规划";
+            tabPage4.Text = "任务统计";
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
@@ -448,13 +437,13 @@
             // 
             // tabPage6
             // 
-            tabPage6.ImageKey = "个人主页.png";
+            tabPage6.ImageKey = "锁屏设置.png";
             tabPage6.Location = new Point(4, 34);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(3);
             tabPage6.Size = new Size(1393, 792);
             tabPage6.TabIndex = 5;
-            tabPage6.Text = "个人主页";
+            tabPage6.Text = "锁屏设置";
             tabPage6.UseVisualStyleBackColor = true;
             // 
             // imageList1
@@ -465,9 +454,9 @@
             imageList1.Images.SetKeyName(0, "任务总览.png");
             imageList1.Images.SetKeyName(1, "日历视图.png");
             imageList1.Images.SetKeyName(2, "开始专注.png");
-            imageList1.Images.SetKeyName(3, "任务规划.png");
+            imageList1.Images.SetKeyName(3, "任务统计.png");
             imageList1.Images.SetKeyName(4, "社区一览.png");
-            imageList1.Images.SetKeyName(5, "个人主页.png");
+            imageList1.Images.SetKeyName(5, "锁屏设置.png");
             // 
             // editTask
             // 
@@ -537,7 +526,6 @@
         private Button btnCommunity;
         private Button btnStopTimer;
         private Button btnStatistics;
-        private Button btnPlanTasks;
         private Button btnCalendar;
         private ToolStripMenuItem editTask;
         private ContextMenuStrip contextMenu;
