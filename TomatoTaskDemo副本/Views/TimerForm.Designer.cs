@@ -61,6 +61,7 @@
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
             splitContainer1.Name = "splitContainer1";
+            splitContainer1.BorderStyle = BorderStyle.FixedSingle;
             // 
             // splitContainer1.Panel1
             // 
