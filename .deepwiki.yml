@@ -1,0 +1,47 @@
+# .deepwiki.yml - C# WinForms 项目配置
+version: 1.0
+
+# 项目元数据
+project:
+  name: "MyWinFormsApp"   # 项目名称
+  language: "C#"
+  framework: "net7.0-windows"  # 目标框架（根据实际修改，如 net48 等）
+
+# 代码分析配置
+analysis:
+  # 包含的文件/目录（优先级高于 exclude）
+  include:
+    - "**/*.cs"          # 所有 C# 文件
+    - "**/*.csproj"      # 项目文件
+    - "**/*.sln"         # 解决方案文件
+
+  # 排除的目录（如编译输出、依赖项）
+  exclude:
+    - "**/bin/**"        # 编译输出目录
+    - "**/obj/**"        # 临时编译文件
+    - "**/packages/**"   # NuGet 包目录（如果本地存储）
+
+  # 静态代码分析规则
+  code_quality:
+    enable: true
+    ruleset: "recommended"  # 可选：default/recommended/strict
+    # 自定义忽略的规则（示例）
+    ignore_rules:
+      - "IDE0017"  # 简化对象初始化警告
+      - "CA1822"   # 标记未使用的成员
+
+# 文档生成配置（假设使用 XML 文档）
+documentation:
+  enable: true
+  output_dir: "./docs/"
+  xml_comments: true  # 生成 XML 文档文件
+  exclude_namespaces:
+    - "MyWinFormsApp.Properties"  # 忽略自动生成的命名空间
+
+# 依赖项扫描配置
+dependencies:
+  nuget:
+    enable: true
+    sources:
+      - "https://api.nuget.org/v3/index.json"  # 官方 NuGet 源
+
